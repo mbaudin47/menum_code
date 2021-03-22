@@ -1,0 +1,6 @@
+Nombre de carrés dessous =  48
+Nombre de carrés au dessus =  27
+Nombre de carrés contenant =  94
+Minorant de l'intégrale = 0.4800000000000001
+Majorant de l'intégrale = 0.9400000000000002
+Erreur absolue = 0.11589242746631379

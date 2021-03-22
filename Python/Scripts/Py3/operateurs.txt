@@ -1,0 +1,12 @@
+Operateurs arithmetiques
+a+b= 5.0
+a-b= -1.0
+a*b= 6.0
+a/b= 0.6666666666666666
+a**2= 4.0
+a%2= 0.0
+Operateurs de comparaison
+True
+False
+True
+True

@@ -1,0 +1,9 @@
+
+Division par zero avec Numpy
+inf
+
+Zeros avec signes avec Numpy
+x= 0.0
+1/x= inf
+x= -0.0
+1/x= -inf

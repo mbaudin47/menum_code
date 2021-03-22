@@ -1,0 +1,11 @@
+topt= 7.011582539733987
+fopt= 307.7276254850535
+z'(t) (ordre=1)=-6.104e-05
+z'(t) (ordre=2)=1.802e-06
+z'(t) (ordre=4)=1.773e-06
+z''(t) (ordre=1)=-9.810e+00
+z''(t) (ordre=2)=-9.810e+00
+z''(t) (ordre=4)=-9.810e+00
+Erreur sur z'(t) (ordre=1)=7.309e-08
+z^(4)(t) (ordre=6)=-7.672e-03
+Erreur sur z''(t) (ordre=1)=2.344e-14

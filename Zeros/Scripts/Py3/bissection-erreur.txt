@@ -1,0 +1,7 @@
+
+3. Bisection
+xs= 1.4142135623730954
+Correct decimal digits= 15.80407477235901
+Iterations= 53
+
+4. Faire un graphique

@@ -1,0 +1,2 @@
+Pas optimal:2.107e-08
+Erreur optimale:6.440e-09

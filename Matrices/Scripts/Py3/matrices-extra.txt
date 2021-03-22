@@ -1,0 +1,61 @@
+1. Produit matrice-vecteur : algorithme
+A=
+[[1. 2.]
+ [3. 4.]
+ [5. 6.]
+ [7. 8.]]
+x=
+[1. 2.]
+A@x=
+[ 5. 11. 17. 23.]
+myMatVecProduct(A,x)=
+[ 5. 11. 17. 23.]
+
+2. Produit matrice-matrice : algorithme
+A=
+[[1. 2.]
+ [3. 4.]
+ [5. 6.]
+ [7. 8.]]
+B=
+[[1. 2. 3.]
+ [4. 5. 6.]]
+A@B=
+[[ 9. 12. 15.]
+ [19. 26. 33.]
+ [29. 40. 51.]
+ [39. 54. 69.]]
+myMatMatProduct(A,B)=
+[[ 9. 12. 15.]
+ [19. 26. 33.]
+ [29. 40. 51.]
+ [39. 54. 69.]]
+
+3. Produit tensoriel
+x=
+[1. 2.]
+y=
+[0. 1. 2. 3.]
+outer(x,y)=
+[[0. 1. 2. 3.]
+ [0. 2. 4. 6.]]
+
+4. Somme
+x=
+[1. 2. 3.]
+y=
+[[4.]
+ [5.]
+ [6.]]
+x+y=
+[[5. 6. 7.]
+ [6. 7. 8.]
+ [7. 8. 9.]]
+
+5. Somme, multiplication par un scalaire
+alpha=
+2.0
+x=
+[1. 2. 3.]
+alpha*x=
+[2. 4. 6.]

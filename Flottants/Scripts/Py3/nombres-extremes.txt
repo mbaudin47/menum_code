@@ -1,0 +1,28 @@
+
+1. Nombres extremes : INF, -INF
+x= inf
+1+x= inf
+2*x= inf
+x/2= inf
+1/x= 0.0
+x= -inf
+1+x= -inf
+2*x= -inf
+x/2= -inf
+1/x= -0.0
+
+2. NAN
+x= nan
+1+x= nan
+2*x= nan
+x/2= nan
+1/x= nan
+
+3. Comment produire NAN ?
+x-x nan
+0*x nan
+x/x nan
+
+4. Division par zero
+x= 0.0
+x= -0.0

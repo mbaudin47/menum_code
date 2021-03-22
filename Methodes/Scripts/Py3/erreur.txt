@@ -1,0 +1,60 @@
+
+computed= 1.0 , exact= 1.0
+Absolute error: 0.0
+Relative error: 0.0
+Correct base- 10  digits: 15.954589770191001
+
+computed= 1.0 , exact= 1.0
+Absolute error: 0.0
+Relative error: 0.0
+Correct base- 2  digits: 53.0
+
+computed= 2.0 , exact= 1.0
+Absolute error: 1.0
+Relative error: 1.0
+Correct base- 10  digits: 0
+
+computed= 2.0 , exact= 1.0
+Absolute error: 1.0
+Relative error: 1.0
+Correct base- 2  digits: 0
+
+computed= 1.000001 , exact= 1.0
+Absolute error: 9.999999999177334e-07
+Relative error: 9.999999999177334e-07
+Correct base- 10  digits: 6.000000000035727
+
+computed= 1.000001 , exact= 1.0
+Absolute error: 9.999999999177334e-07
+Relative error: 9.999999999177334e-07
+Correct base- 2  digits: 19.93156856944286
+
+computed= 1.000001e+100 , exact= 1e+100
+Absolute error: 9.999999999090775e+93
+Relative error: 9.999999999090775e-07
+Correct base- 10  digits: 6.000000000039487
+
+computed= 1.000001e+100 , exact= 1e+100
+Absolute error: 9.999999999090775e+93
+Relative error: 9.999999999090775e-07
+Correct base- 2  digits: 19.931568569455347
+
+computed= 1e-100 , exact= 0.0
+Absolute error: 1e-100
+Relative error: inf
+Correct base- 10  digits: 0
+
+computed= 1e-100 , exact= 0.0
+Absolute error: 1e-100
+Relative error: inf
+Correct base- 2  digits: 0
+
+computed= 1.000001 , exact= 1.0
+Absolute error: 9.999999999177334e-07
+Relative error: 9.999999999177334e-07
+Correct base- 10  digits: 6.000000000035727
+
+computed= 1.000001e+100 , exact= 1e+100
+Absolute error: 9.999999999090775e+93
+Relative error: 9.999999999090775e-07
+Correct base- 10  digits: 6.000000000039487

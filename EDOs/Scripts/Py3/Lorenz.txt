@@ -1,0 +1,21 @@
+
+3. Attracteur de Lorenz
+3.1 Définir la fonction
+3.2 Résoudre l'ODE
+3.3 Trajectoire
+2.4 Regular plot
+2.5 Other values
+Point stationnaire 1:
+yc = [0.0, 0.0, 0.0]
+f(yc) = [0. 0. 0.]
+Point stationnaire 2:
+yc = [27.0, 8.48528137423857, 8.48528137423857]
+f(yc) = [-1.42108547e-14  0.00000000e+00  0.00000000e+00]
+Point stationnaire 3:
+yc = [27.0, -8.48528137423857, -8.48528137423857]
+f(yc) = [-1.42108547e-14  0.00000000e+00  0.00000000e+00]
+J=
+[[ -2.66666667   0.           0.        ]
+ [  0.         -10.          10.        ]
+ [ -0.          28.          -1.        ]]
+w =  [ 11.82772345 -22.82772345  -2.66666667]

@@ -1,0 +1,5 @@
+1. Oscillateur harmonique
+1.1 Definir la fonction
+1.2 Resoudre l'ODE
+1.3 Une trajectoire dans l'espace des phases
+1.4 Serie temporelle

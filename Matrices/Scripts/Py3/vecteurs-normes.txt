@@ -1,0 +1,11 @@
+
+2. Boule unite en norme 2
+
+3. Boule unite en norme 1
+
+4. Boule unite en norme Infinie
+
+Vecteurs orthogonaux
+x= [2. 8.]
+y= [ 4. -1.]
+(x,y)= 0.0

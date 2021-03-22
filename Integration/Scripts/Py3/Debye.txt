@@ -1,0 +1,2 @@
+Heat capacity : 3.7443285679937655e-23  (J/K)
+Molar Heat capacity at 298 (K): 22.548875682751515  (J/mol/K)

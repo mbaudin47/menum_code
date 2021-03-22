@@ -1,0 +1,5 @@
+Variables
+b= 2
+type(b)= <class 'int'>
+b= 4.0
+type(b)= <class 'float'>

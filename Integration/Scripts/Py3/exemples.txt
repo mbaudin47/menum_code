@@ -1,0 +1,35 @@
+
+Exemple A : Singularite non integrable
+
+Exemple B : Sans probleme
+expected= 0.9270373386506859
+Q= 0.9270373679402224
+Digits= 7.500384728170261
+fcount= 25
+
+Exemple C : Singularite apparente
+
+Exemple D : Gerer une singularite apparente I
+afterzero= 5e-324
+expected= 1.8519370519824663
+Q= 1.851937051858132
+Digits= 10.173035195126142
+fcount= 33
+
+Exemple E : Gerer une singularite apparente II
+expected= 1.8519370519824663
+Q= 1.851937051858132
+Digits= 10.173035195126142
+fcount= 33
+
+Exemple F : Arguments supplementaires
+expected= 0.03483290960120583
+from scipy/special= 0.03483290960120583
+Q= 0.03483301962421493
+Digits= 5.500506234083193
+fcount= 41
+
+Optionnel
+Extra-arguments of callbacks
+midpoint(myfunB,0,1)= 0.9701425001453319
+midpoint(myfunBbis,0,1,1.,1.,1.)= 0.9701425001453319
