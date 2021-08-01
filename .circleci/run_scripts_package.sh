@@ -4,9 +4,6 @@ set -xe
 
 export PYTHONPATH="$PWD/Scripts-Eleves/Py3:$PYTHONPATH"
 
-cd ..
-
-#
 cd Scripts-Eleves/Py3 && python3 floats.py && cd -
 cd Scripts-Eleves/Py3 && python3 fzero.py && cd -
 cd Scripts-Eleves/Py3 && python3 interp.py && cd -
