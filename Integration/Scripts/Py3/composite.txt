@@ -1,4 +1,0 @@
-Integral exact= 2.286
-Composite Midpoint = 2.262, Digits=1.98, f_count=9
-Composite Trapezoidal = 2.334, Digits=1.67, f_count=10
-Composite Simpson = 2.286, Digits=4.05, f_count=19

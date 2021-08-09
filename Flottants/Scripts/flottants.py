@@ -19,7 +19,7 @@ emin = -2
 emax = 3
 """
 Pour avoir la liste des normalises
-for m in range(2**(p-1),2**p)
+for m in range(2**(p-1), 2**p)
 """
 # Pour avoir les normalises et denormalises
 allfloats = []
@@ -75,7 +75,7 @@ print(u"Floats=")
 for f in allfloats:
     print(f)
 fig = pl.gcf()
-fig.set_size_inches(4.0, 1.0)
+fig.set_size_inches(4.0, 0.5)
 pl.savefig("flottants.pdf", bbox_inches="tight")
 
 #
@@ -86,3 +86,9 @@ mu = 2 ** emin
 print("mu=", mu)
 alpha = 2 ** (emin - p + 1)
 print("alpha=", alpha)
+
+#
+# Les flottants dénormalisés sont inférieurs (strictement) à m = beta ** (p - 1)
+limite_denormal = 2 ** (p - 1)
+print("Limite dénormalisés:", limite_denormal)
+print("Exposant de beta minmal:", emin - p + 1)

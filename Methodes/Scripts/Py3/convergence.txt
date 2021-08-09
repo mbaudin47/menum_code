@@ -1,3 +1,0 @@
-1. Linear Convergence
-
-2. Quadratic Convergence

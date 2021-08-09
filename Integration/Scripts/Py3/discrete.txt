@@ -1,9 +1,0 @@
-
-1. Trapezoidal rule
-x= [1 2 3 4 5 6]
-y= [ 6.  8. 11.  7.  5.  2.]
-T= 35.0
-
-2. Spline correction
-D= -0.24999999999999994
-With spline correction= 35.25

@@ -1,9 +1,0 @@
-
-1. Compute second derivative
-x= 1.0
-Forward (order 1) : H= 2.0000000100495186 , digits= 8.298884739459774 , fcount= 4
-Centered (order 2): H= 2.0000000100495186 , digits= 8.298884739459774 , fcount= 4
-Centered (order 4): H= 1.9999999999954916 , digits= 11.647008165440374 , fcount= 6
-
-2. Use various step sizes
-Plot digits

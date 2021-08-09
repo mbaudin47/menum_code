@@ -1,2 +1,0 @@
-Nombre de pas de temps :  42
-Nombre de pas de temps :  31

@@ -1,3 +1,0 @@
-1. Spline naturelle
-
-2. Spline not-a-knot

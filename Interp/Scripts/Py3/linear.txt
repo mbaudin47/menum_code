@@ -1,6 +1,0 @@
-
-1. Un exemple d'interpolation lineaire
-
-2. Une fonction d'interpolation lineaire
-
-3. Comparaison linéaire contre polynomial
