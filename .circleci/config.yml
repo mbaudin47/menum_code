@@ -3,13 +3,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.9
     steps:
       - checkout
       - run:
           name: Install
           command: |
-            sudo pip3 install -r requirements.txt
+            sudo apt-get update
+            sudo apt install python3-pip
+            pip install -r requirements.txt
       - run:
           name: Build and test - Scripts des cours
           command: ./.circleci/run_scripts_python.sh
