@@ -7,4 +7,4 @@ Ce livre est disponible chez Dunod à l'adresse :
 
 https://www.dunod.com/sciences-techniques/methodes-numeriques-avec-python-theorie-algorithmes-implementation-et
 
-![[Méthodes Numériques - Baudin - Dunod (2023).jpeg]]
+![Livre Méthodes Numériques](Méthodes-Numériques-Baudin-Dunod-(2023).jpeg)
