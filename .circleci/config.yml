@@ -9,6 +9,7 @@ jobs:
       - run:
           name: Install
           command: |
+            sudo apt install python3-pip
             sudo pip3 install -r requirements.txt
       - run:
           name: Build and test - Scripts des cours
