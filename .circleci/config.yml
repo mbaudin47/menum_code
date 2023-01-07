@@ -11,7 +11,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt install python3-pip
-            sudo pip install -r requirements.txt
+            pip install -r requirements.txt
       - run:
           name: Build and test - Scripts des cours
           command: ./.circleci/run_scripts_python.sh
