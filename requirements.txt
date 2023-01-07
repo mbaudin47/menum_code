@@ -3,10 +3,9 @@ matplotlib
 scipy
 jupyterlab
 nbconvert
-black==19.10b0
+black
 pre-commit
 flake8
 black-nb
-openturns==1.15
+openturns
 statsmodels
-
