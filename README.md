@@ -27,3 +27,9 @@ La licence est indiquée dans le fichier `LICENSE` disponible dans ce répertoir
 - `SysLin` : systèmes d'équations linéaires (chapitre 7)
 - `tests` : tests unitaires de ce projet
 - `Zeros` : équations non linéaires (chapitre 13)
+
+Le code est testé avec la configuration suivante : 
+- Python 3.9 ;
+- matplotlib-3.6.2 ;
+- numpy-1.24.1 ;
+- scipy-1.10.0.
