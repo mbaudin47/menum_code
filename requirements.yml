@@ -3,16 +3,5 @@ name: menum_public
 dependencies:
 - python==3.9
 - numpy>=1.16.*
-- matplotlib>=2.*
 - scipy>=1.*
-- openturns>=1.16
-- jupyterlab
-- nbconvert
-- black
-- pre-commit
-- flake8
-- tqdm
-- pip
-- statsmodels
-- pip:
-  - black-nb
+- matplotlib>=2.*
