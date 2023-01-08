@@ -11,6 +11,17 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt install python3-pip
+            sudo apt install texlive
+            sudo apt install texlive-base
+            sudo apt install texlive-latex-extra
+            sudo apt install texlive-latex-recommended
+            sudo apt install texlive-fonts-recommended
+            sudo apt install texlive-science
+            sudo apt install texlive-lang-french
+            sudo apt install texlive-bibtex-extra biber
+            sudo apt install lmodern
+            sudo apt install cm-super
+            sudo apt install dvipng
             pip install -r requirements.txt
       - run:
           name: Build and test - Scripts des cours
