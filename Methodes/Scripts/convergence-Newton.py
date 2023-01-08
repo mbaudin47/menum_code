@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On considère la méthode de Newton et on fait l'hypothèse que la méthode 
 converge de manière quadratique. 
@@ -10,6 +10,11 @@ terme initial égal à 1.
 Observe le nombre de chiffres corrects dans la méthode de la bissection et 
 de la méthode de Newton pour déterminer la racine positive du polynôme :
     P(x) = x ^ 3 + x - 1
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from fzero import newton, bisection
 from floats import computeDigits

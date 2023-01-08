@@ -1,8 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
-from math import pi
+"""
+Dans ce script, nous montrons comment intégrer des fonctions par une
+méthode d'intégration numérique adaptatique.
+
+- exemple A : f(x) = 1 / (2 * x - 1) sur [0, 0.9] ;
+- exemple B : f(x) = 1 / sqrt(1 + x ** 4) sur [0, 1] ;
+- exemple C, D, E : f(x) = sin(x) / x sur [0, pi] ;
+- exemple F : f(x) = 1 / (1 + alpha * x^2) sur [-1, 1].
+
+Références
+----------
+Cleve Moler. Numerical Computing with Matlab. Society for
+Industrial Mathematics, 2004.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
+"""
+
 from scipy import special
 from quadrature import adaptsim
 from floats import computeDigits
@@ -29,8 +46,8 @@ x = np.linspace(0.0, 0.9, 100)
 y = myfunA(x)
 pl.figure(figsize=(2.0, 1.0))
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(u"$1/(2x-1)$")
 pl.savefig("exemples-inv2x.pdf", bbox_inches="tight")
 
@@ -54,8 +71,8 @@ x = np.linspace(0.0, 1.0, 100)
 y = myfunB(x)
 pl.figure(figsize=(2.0, 1.0))
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(u"$1/\sqrt{1+x^4}$")
 pl.savefig("exemples-invsqrt.pdf", bbox_inches="tight")
 
@@ -83,19 +100,19 @@ def mysinc(x):
 
 
 # Make a plot
-x = np.linspace(0.0, pi, 100)
+x = np.linspace(0.0, np.pi, 100)
 y = mysinc(x)
 pl.figure(figsize=(2.0, 1.0))
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(u"$\sin(x)/x$")
 pl.savefig("exemples-sinc.pdf", bbox_inches="tight")
 
 # integral from 0 to pi sin(x)/x
 if False:
     # ZeroDivisionError: float division
-    Q, fcount = adaptsim(mysinc, 0.0, pi)
+    Q, fcount = adaptsim(mysinc, 0.0, np.pi)
     expected = 1.85193705198246617036
     print(u"expected=", expected)
     print(u"Q=", Q)
@@ -109,16 +126,16 @@ if False:
 print(u"")
 print(u"Exemple D : Gerer une singularite apparente I")
 # integral from 0 to pi sin(x)/x
-afterzero = np.nextafter(0.0, pi)
+afterzero = np.nextafter(0.0, np.pi)
 print(u"afterzero=", afterzero)
-Q, fcount = adaptsim(mysinc, afterzero, pi)
+Q, fcount = adaptsim(mysinc, afterzero, np.pi)
 expected = 1.85193705198246617036
 print(u"expected=", expected)
 print(u"Q=", Q)
 digits = computeDigits(expected, Q, 10)
 print(u"Digits=", digits)
 print(u"fcount=", fcount)
-# Q,fcount=adaptsim_gui(mysinc,afterzero,pi)
+# Q,fcount=adaptsim_gui(mysinc, afterzero, np.pi)
 
 #
 # Exemple E : Gerer une singularite apparente II
@@ -136,7 +153,7 @@ def mysincbis(x):
 
 
 # integral from 0 to pi sin(x)/x
-Q, fcount = adaptsim(mysincbis, 0.0, pi)
+Q, fcount = adaptsim(mysincbis, 0.0, np.pi)
 expected = 1.85193705198246617036
 print(u"expected=", expected)
 print(u"Q=", Q)
@@ -151,20 +168,20 @@ print(u"")
 print(u"Exemple F : Arguments supplementaires")
 
 
-def betafun(t, z, w):
-    y = t ** (z - 1) * (1.0 - t) ** (w - 1)
+def rungefun(x, alpha, beta, gamma):
+    y = alpha / (beta + gamma * x ** 2)
     return y
 
 
-z = 8.0 / 3.0
-w = 10.0 / 3.0
+alpha = 1.0
+beta = 1.0
+gamma = 25.0
+exacte = (5.0 - np.sin(5.0)) / 10.0
+print(u"exacte=", exacte)
 tol = 1.0e-6
-Q, fcount = adaptsim(betafun, 0.0, 1.0, tol, z, w)
-expected = 0.0348329096012058297782
-print(u"expected=", expected)
-print(u"from scipy/special=", special.beta(z, w))
+Q, fcount = adaptsim(rungefun, -1.0, 1.0, tol, alpha, beta, gamma)
 print(u"Q=", Q)
-digits = computeDigits(expected, Q, 10)
+digits = computeDigits(exacte, Q, 10)
 print(u"Digits=", digits)
 print(u"fcount=", fcount)
 

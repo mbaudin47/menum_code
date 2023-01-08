@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
-Utilise différentes méthodes de résolution d'EDOs pour résoudre le problème 
+Utilise différentes méthodes de résolution d'EDO pour résoudre le problème 
 de l'oscillateur harmonique. 
 Dessine la trajectoire dans l'espace des phases. 
 Dessine la série temporelle.
 
 Use different ODE solves to solve the harmonic oscillator. 
 Plot a trajectory in the phase space. 
-Plot the time serie.
+Plot the time series.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from scipy.integrate import odeint
 import pylab as pl
@@ -44,23 +49,25 @@ y = odeint(harmosc, y0, t)
 # 1.3 Une trajectoire dans l'espace des phases
 print(u"1.3 Une trajectoire dans l'espace des phases")
 delta = 0.1
-pl.figure(figsize=(3.0, 2.0))
+pl.figure(figsize=(2.1, 1.3))
 pl.plot(y[:, 0], y[:, 1], "-")
 pl.plot(y0[0], y0[1], "*")
 pl.plot(y[-1, 0], y[-1, 1], "o")
-pl.text(y0[0] + delta, y0[1] + delta, "t=%s" % (t_min))
-pl.text(y[-1, 0] + delta, y[-1, 1] + delta, "t=%s" % (t_max))
+pl.text(y0[0] + delta, y0[1] + delta, "$t=%s$" % (t_min))
+pl.text(y[-1, 0] + delta, y[-1, 1] + delta, "$t=%s$" % (t_max))
 pl.axis("equal")
 pl.axis([-1.2, 1.4, -1.2, 1.4])
-pl.xlabel(u"y[0]")
-pl.ylabel(u"y[1]")
-pl.title(u"Oscillateur harmonique : une trajectoire")
+pl.xlabel(u"\\tt{y[0]}")
+pl.ylabel(u"\\tt{y[1]}")
 pl.savefig("exemples-phaseplot-comm.pdf", bbox_inches="tight")
 
 # 1.4 Serie temporelle
 print(u"1.4 Serie temporelle")
-ode_plot(t, y, "Oscillateur harmonique", "-")
+ode_plot(t, y, "", "-")
 fig = pl.gcf()
-fig.set_figwidth(3.0)
-fig.set_figheight(2.0)
+fig.set_figwidth(2.0)
+fig.set_figheight(1.5)
+ax = fig.get_axes()
+ax[0].set_ylabel(u"\\tt{y[0]}")
+ax[1].set_ylabel(u"\\tt{y[1]}")
 pl.savefig("exemples-timeseries.pdf", bbox_inches="tight")

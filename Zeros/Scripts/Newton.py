@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise la méthode de Newton pour calculer une approximation de sqrt(2) par 
 résolution de l'équation non linéaire x^2 - 2 = 0.
@@ -15,6 +15,11 @@ Present counter-examples for Newton's method:
     * non convergence, 
     * divergence 1, 
     * divergence 2.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from math import sqrt
 from fzero import newton, newtongui
@@ -106,8 +111,8 @@ f = vectorize(counterF)
 y = f(x, a)
 pl.figure()
 pl.plot(x, y, "r-")
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 pl.title(u"Newton Counter Example - A")
 if False:
     # Generates an exception
@@ -115,22 +120,22 @@ if False:
     print(u"Iterations=", len(history))
 
 # Figure dans le manuel
-pl.figure(figsize=(2.5, 1.5))
+pl.figure(figsize=(1.0, 1.0))
 pl.plot(x, y, "-", label="f", color="tab:red")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-x0 = 1.0
-y0 = counterF(x0 + a, a)
-y1 = counterF(a - x0, a)
-pl.plot([a + x0, a + x0], [0.0, y0], "--", label="Newton", color="tab:blue")
-pl.plot([a + x0, a - x0], [y0, 0.0], "--", color="tab:blue")
-pl.plot([a - x0, a - x0], [0.0, y1], "--", color="tab:blue")
-pl.plot([a - x0, a + x0], [y1, 0.0], "--", color="tab:blue")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+x1 = 1.0
+y0 = counterF(x1 + a, a)
+y1 = counterF(a - x1, a)
+pl.plot([a + x1, a + x1], [0.0, y0], "--", label="Newton", color="tab:blue")
+pl.plot([a + x1, a - x1], [y0, 0.0], "--", color="tab:blue")
+pl.plot([a - x1, a - x1], [0.0, y1], "--", color="tab:blue")
+pl.plot([a - x1, a + x1], [y1, 0.0], "--", color="tab:blue")
 pl.plot(a, 0.0, "o", color="tab:green")
-pl.plot(a + x0, 0.0, "o", color="tab:orange")
-pl.plot(a + x0, y0, "o", color="tab:orange")
-pl.plot(a - x0, 0.0, "o", color="tab:orange")
-pl.plot(a - x0, y1, "o", color="tab:orange")
+pl.plot(a + x1, 0.0, "o", color="tab:orange")
+pl.plot(a + x1, y0, "o", color="tab:orange")
+pl.plot(a - x1, 0.0, "o", color="tab:orange")
+pl.plot(a - x1, y1, "o", color="tab:orange")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("Newton.pdf", bbox_inches="tight")
 
@@ -158,19 +163,22 @@ x = linspace(-2.0, 2.0, N)
 y = counterExpF(x)
 pl.figure()
 pl.plot(x, y, "-", color="tab:orange")
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 pl.title(u"Newton Counter Example - B")
-if False:
+try:
     xs, history = newtongui(counterExpF, 1.0, counterExpFPrime)
     print(u"Iterations=", len(history))
+except ValueError:
+    print("Newton does not converge !")
+
 #
 # 5. Contre-exemple - C
-# Divergence
+# Convergence lente
 #
 print(u"")
 print(u"5. Contre-exemple C")
-print(u"   Division par zero")
+print(u"Convergence lente")
 
 
 def counterPow3F(x):
@@ -188,8 +196,47 @@ x = linspace(0.0, 2.0, N)
 y = counterPow3F(x)
 pl.figure()
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 pl.title(u"Newton Counter Example - C")
-# ZeroDivisionError: float division by zero
-# xs,history=newton(counterPow3F,1.,counterPow3FPrime)
+x1 = 1.01
+xs, history = newtongui(counterPow3F, x1, counterPow3FPrime)
+print("history", history)
+print("Number of iterations:", len(history))
+
+#
+# 6. Contre-exemple - D
+# Division par zéro
+#
+print(u"")
+print(u"6. Contre-exemple D")
+print(u"Division par zéro")
+
+
+def counterExempleD(x):
+    y = x**3 + 3 * x ** 2 - 6
+    return y
+
+
+def counterExempleDPrime(x):
+    y = 3 * x ** 2 + 6 * x
+    return y
+
+
+N = 100
+x = linspace(-3.0, 1.5, N)
+y = counterExempleD(x)
+pl.figure(figsize=(1.0, 1.0))
+pl.plot(x, y, "-")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
+x_exact = 1.195823345445647153
+pl.plot([x_exact], [0.0], "+", label="Zéro")
+x1 = -2.0
+pl.plot([x1], [0.0], "o", label="$x_1$")
+pl.legend(bbox_to_anchor=(1.0, 1.0))
+pl.savefig("Newton-contre-exemple.pdf", bbox_inches="tight")
+try:
+    xs, history = newtongui(counterExempleD, x1, counterExempleDPrime)
+except ZeroDivisionError:
+    print("Division par zéro!")

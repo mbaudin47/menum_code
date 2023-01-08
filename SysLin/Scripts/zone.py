@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine des zones approchées dans lesquelles se trouvent la plupart des 
 solutions d'un système d'équations perturbées. 
@@ -18,6 +18,11 @@ Dessine les points y tels que
 où E est aléatoire uniforme E ~ U(-0.5,0.5). 
 
 Test approximate solutions to a linear equation.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import array, linspace, inf
@@ -113,7 +118,7 @@ for i in range(2):
     pl.subplot(1, 2, i + 1)
     A = get_matrix(i)
     #
-    pl.title(u"Perturb. de b, K=%.2f" % (cond(A, inf)))
+    pl.title(u"Perturb. de b, $\kappa_{\infty}=%.2f$" % (cond(A, inf)))
     pl.axis("equal")
     #
     x = array([2.0, 3.0])
@@ -150,7 +155,7 @@ for i in range(2):
     pl.xlim((x1min, x1max))
     pl.ylim((x2min, x2max))
 
-pl.subplots_adjust(wspace=0.3)
+pl.subplots_adjust(wspace=1.0)
 pl.savefig("zone-b.pdf", bbox_inches="tight")
 
 ######################################################
@@ -168,7 +173,7 @@ for i in range(2):
     pl.subplot(1, 2, i + 1)
     A = get_matrix(i)
     #
-    pl.title(u"Perturb. de A, K=%.2f" % (cond(A, inf)))
+    pl.title(u"Perturb. de A, $\kappa_{\infty}=%.2f$" % (cond(A, inf)))
     pl.axis("equal")
     #
     # Compute the solution
@@ -204,5 +209,5 @@ for i in range(2):
     pl.ylabel(u"$x_2$")
     pl.xlim((x1min, x1max))
     pl.ylim((x2min, x2max))
-pl.subplots_adjust(wspace=0.3)
+pl.subplots_adjust(wspace=1.0)
 pl.savefig("zone-A.pdf", bbox_inches="tight")

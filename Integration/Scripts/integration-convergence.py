@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Plot convergence of four rules of numerical integration depending on the 
 interval length.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -61,7 +66,7 @@ for i in range(npoints):
 # errorTrapezoidal[errorTrapezoidal==0.0] = np.nan
 # errorBoole[errorBoole==0.0] = np.nan
 
-pl.figure(figsize=(2.5, 1.5))
+pl.figure(figsize=(2.0, 1.5))
 if False:
     pl.plot(h, h ** 3, "k-", label="h**3")
     pl.plot(h, h ** 5, "k-", label="h**5")
@@ -75,6 +80,6 @@ pl.plot(h, errorBoole, "-", label="Boole")
 pl.legend(bbox_to_anchor=(1.0, 1.0, 0.0, 0.0))
 pl.xscale("log")
 pl.yscale("log")
-pl.xlabel(u"h")
+pl.xlabel(u"$h$")
 pl.ylabel(u"Erreur absolue")
 pl.savefig("integration-convergence.pdf", bbox_inches="tight")

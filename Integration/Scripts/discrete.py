@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
+"""
+Approche l'intégrale d'une fonction définie par des données. 
+
+Références
+----------
+Cleve Moler. Numerical Computing with Matlab. Society for
+Industrial Mathematics, 2004.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
+"""
 
 
 import numpy as np
@@ -46,11 +57,11 @@ print(u"S=%.3f (error = %.3e)" % (S, error_S))
 fig = pl.figure(figsize=(2.0, 1.0))
 u = np.linspace(-0.5, 3.0)
 v = interp.spline_interpolation(x, y, u)
-pl.title(u"Intégration de données discrètes.")
+pl.title(u"Intégration de données discrètes")
 pl.plot(x, y, "o")
 pl.plot(x, y, "-", label="Trapèze : T = %.3f" % (T))
 pl.plot(u, v, "--", label="Spline : S = %.3f" % (S))
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.savefig("discrete.pdf", bbox_inches="tight")

@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Résout l'équation différentielle ordinaire associée au problème de Lorenz.
 
 Références
+----------
 Morris W. Hirsch, Stephen Smale et Robert. L. Devaney. Differential 
-Equations, Dynamical Systems, and an introduction do chaos, Third
+Equations, Dynamical Systems, and an introduction to chaos, Third
 Edition. Elsevier, 2013.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from scipy.integrate import odeint
@@ -90,6 +94,9 @@ fig = lorenzgui(tfinal, beta, sigma, rho)
 pl.title(u"Attracteur de Lorenz. $\\beta=8/3$, $\\sigma=10$, $\\rho=28$.")
 fig.set_size_inches(2.5, 1.5, forward=True)
 pl.legend(bbox_to_anchor=(1.0, 1.0))
+children = fig.get_children()[1]
+line = children.get_children()[0]
+line.set_linewidth(0.5)
 pl.savefig("Lorenz.pdf", bbox_inches="tight")
 
 #

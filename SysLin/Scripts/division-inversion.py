@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Comparaison entre la division et l'inversion pour la résolution 
 d'une équation linéaire à une inconnue.
 
-Référence
+Références
+----------
 George E. Forsythe, Michael A. Malcolm et Cleve Moler. Computer
 methods for mathematical computations. Prentice-Hall Series in 
 Automatic Computation, 1977.
 Page 31.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np

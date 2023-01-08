@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise numpy pour calculer la solution d'un système d'équations 
 linéaires. 
@@ -9,6 +9,11 @@ résout un système triangulaire inférieur.
 Montre comment rechercher les pivots dans une matrice avec argmax. 
 Extraire les matrices L et U d'une décomposition LU.
 Voir les matrices intermediaires.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import array, argmax, tril, triu
 from numpy.linalg import solve

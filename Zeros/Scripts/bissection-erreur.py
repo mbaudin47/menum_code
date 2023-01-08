@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine la convergence de la méthode de la dichotomie en utilisant le 
 logarithme en base 10 de l'erreur absolue, en fonction du nombre 
 d'itérations. 
 
-
 Plot the convergence of the bisection algorithm in terms of the 
 base-10 logarithm of the absolute error, depending on the number of 
 iterations. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from math import sqrt, log10
 from fzero import bisection
@@ -51,7 +55,7 @@ for xs in history:
 i = list(range(n))
 pl.figure(figsize=(2.0, 1.0))
 pl.plot(i, erreur, "-")
-pl.xlabel(u"Iterations")
+pl.xlabel(u"Itérations")
 pl.ylabel(u"Log10(erreur)")
 pl.title(u"Convergence de la dichotomie")
 pl.savefig("bissection-erreur.pdf", bbox_inches="tight")

@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Observe graphiquement la différence entre vecteurs linéairement 
 indépendants et dépendants. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import array
@@ -26,8 +31,8 @@ print(u"Rank=", matrix_rank(A))
 # 2. Graphique
 print(u"")
 print(u"2. Graphique")
-delta = 0.3
-figure(figsize=(2.0, 1.5))
+delta = 0.4
+figure(figsize=(2.0, 1.0))
 plot([0.0, A[0, 0]], [0.0, A[1, 0]], "-")
 text(A[0, 0] - delta, A[1, 0] + delta, "$\mathbf{a}_1$")
 plot([0.0, A[0, 1]], [0.0, A[1, 1]], "--")
@@ -49,8 +54,8 @@ print(u"Rank=", matrix_rank(A))
 # 4. Graphique
 print(u"")
 print(u"4. Graphique")
-delta = 0.3
-figure(figsize=(2.0, 1.5))
+delta = 0.4
+figure(figsize=(2.0, 1.0))
 plot([0.0, A[0, 0]], [0.0, A[1, 0]], "-")
 text(A[0, 0] + delta, A[1, 0] - delta, "$\mathbf{a}_1$")
 plot([0.0, A[0, 1]], [0.0, A[1, 1]], "--")

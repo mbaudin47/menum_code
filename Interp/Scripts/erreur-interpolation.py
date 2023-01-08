@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 L'erreur d'interpolation est 
 
@@ -22,6 +22,11 @@ et on estime Wn pour n = 3 à n = 50.
 Pour cela, on évalue le polynôme nodal sur une grille régulière de m points, 
 avec m = 1000 * n et la valeur de Wn est approchée par le maximum 
 de la valeur absolue de la fonction wn(x) sur la grille.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -99,5 +104,5 @@ pl.plot(range(nmin, nmax + 1), ymax, "-", label=r"$\widetilde{W}_n$")
 pl.plot(range(nmin, nmax + 1), pmax, "-", label="Borne sup.")
 pl.yscale("log")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"n")
+pl.xlabel(u"$n$")
 pl.savefig("erreur-interpolation.pdf", bbox_inches="tight")

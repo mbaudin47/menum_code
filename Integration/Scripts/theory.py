@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 from quadrature import adaptsim
 
-#
-# Compute integral of (x-c)**p from a to b,
-# where c=(a+b)/2
-#
+"""
+Compute integral of (x-c)**p from a to b,
+where c=(a+b)/2
 
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
+"""
 
 def myfun(x, a, b, p):
     c = (a + b) / 2.0

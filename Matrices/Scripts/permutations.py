@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Définit une matrice de permutation avec numpy : utilisation d'une liste, 
 convertit en matrice, produit matrice-matrice avec une matrice de permutation, 
 utilisation d'une liste pour permuter les lignes de la matrice sans produit.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import array, eye
 

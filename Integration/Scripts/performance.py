@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Analyse la performance de la quadrature adaptative sur la fonction de 
@@ -12,6 +12,11 @@ pour x dans [-1, 1].
 
 Pour cela, on observe l'erreur absolue en fonction du nombre d'appels 
 à la fonction f. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import quadrature
 from floats import computeDigits
@@ -31,11 +36,13 @@ def runge(x):
 # 1. Integrate the Runge function
 print(u"")
 print(u"1. Integrate the Runge function")
-Q, fcount = quadrature.adaptsim_gui(runge, -1.0, 1.0, 1.0e-4)
-_ = pl.title(u"Adaptatif : %.4f, appels : %d" % (Q, fcount))
+Q, fcount = quadrature.adaptsim_gui(runge, -1.0, 1.0, 1.0e-3)
+_ = pl.title(u"Adaptatif : %.4f." % (Q))
 figure = pl.gcf()
-figure.set_figwidth(2.0)
+figure.set_figwidth(1.5)
 figure.set_figheight(1.0)
+pl.xlabel("$x$")
+pl.ylabel("$y$")
 pl.savefig("performance-integration-Runge.pdf", bbox_inches="tight")
 
 # Calcule l'erreur
@@ -66,13 +73,13 @@ for k in range(nombre_pas):
     )
 
 # Make a plot
-fig = pl.figure(figsize=(2.0, 1.2))
+fig = pl.figure(figsize=(1.5, 1.2))
 pl.plot(fcount_quadadapt, err_quadadapt, "-")
-pl.xlabel(u"Nombre d'appels à f")
+pl.xlabel(u"Nombre d'appels à $f$")
 pl.ylabel(u"Erreur absolue")
 pl.xscale("log")
 pl.yscale("log")
-pl.title(u"Convergence.")
+pl.title(u"Convergence")
 pl.savefig("performance-erreur-absolue-integration-Runge.pdf", bbox_inches="tight")
 
 # Composite trapezoidal
@@ -98,14 +105,14 @@ for k in range(nombre_pas):
     err_compsimpson[k] = abs(Q - exact)
 
 # Plot both errors
-fig = pl.figure(figsize=(2.0, 1.0))
+fig = pl.figure(figsize=(1.5, 1.0))
 pl.plot(fcount_quadadapt, err_quadadapt, "-", label=("Adapt."))
-pl.plot(fcount_comptrap, err_comptrap, "--", label="Trapèze c.")
-pl.plot(fcount_compsimpson, err_compsimpson, ":", label="Simpson c.")
+pl.plot(fcount_comptrap, err_comptrap, "--", label="T.C.")
+pl.plot(fcount_compsimpson, err_compsimpson, ":", label="S.C.")
 pl.legend(bbox_to_anchor=(1.0, 1.0, 0.0, 0.0))
 pl.xscale("log")
 pl.yscale("log")
-pl.xlabel(u"Nombre d'appels à f")
+pl.xlabel(u"Nombre d'appels à $f$")
 pl.ylabel(u"Erreur absolue")
 pl.ylim(1.0e-16, 1.0e0)
 pl.savefig("performance-err-abs-Runge-adapt-vs-composite.pdf", bbox_inches="tight")

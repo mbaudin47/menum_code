@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine les fonctions de base d'Hermite.
 Ces polynômes sont définis sur l'intervalle [0,1] et sont tels que
@@ -9,6 +9,11 @@ phi1(0) = 1, phi1'(0) = 0, phi1(1) = 0, phi1'(1) = 0
 phi2(0) = 0, phi2'(0) = 1, phi2(1) = 0, phi2'(1) = 0 
 phi3(0) = 0, phi3'(0) = 0, phi3(1) = 1, phi3'(1) = 0 
 phi4(0) = 0, phi4'(0) = 0, phi4(1) = 0, phi4'(1) = 1 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -29,9 +34,9 @@ pl.plot(t, phi2, "--", label=r"$\varphi_2$")
 pl.plot(t, phi3, "-.", label=r"$\varphi_3$")
 pl.plot(t, phi4, ":", label=r"$\varphi_4$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"t")
-pl.ylabel(u"y")
-pl.title(u"Base polynomiale cubique d'Hermite.")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
+pl.title(u"Base polynomiale cubique d'Hermite")
 fig.set_figwidth(2.0)
 fig.set_figheight(1.0)
 pl.savefig("base-Hermite.pdf", bbox_inches="tight")

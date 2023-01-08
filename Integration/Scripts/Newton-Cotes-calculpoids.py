@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Analyse les polynômes interpolants de Lagrange.
@@ -11,6 +11,11 @@ On en deduit les n polynomes de Lagrange, tels que
 
 Li(xj)= 1 si i=j, 
         0 sinon.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -123,6 +128,6 @@ pl.figure(figsize=(2.0, 1.0))
 pl.plot(narray, s, "o")
 pl.ylim(0.0, 200.0)
 pl.ylabel(u"$\sum_{k=1}^n |u_k|$")
-pl.xlabel(u"n")
+pl.xlabel(u"$n$")
 # pl.title(u"Somme des valeurs absolues des poids réduits.")
-pl.savefig("Newton-Cotes-sommepoids.pdf", bbox_inches="tight")
+pl.savefig("Newton-Cotes-calculpoids.pdf", bbox_inches="tight")

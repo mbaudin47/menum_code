@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Considère l'évolution du transport mondial de passager entre 1971 et 2019. 
 Approche cette courbe par un polynôme de degré 2, puis prédit 
@@ -9,18 +9,21 @@ future similaire à l'évolution passée.
 Utilise un polynôme de degré 1, 2 ou 3 et compare le résultat. 
 Pour résoudre le problème, on évalue la matrice de Vandermonde et on 
 utilise la méthode QR. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
-from numpy import array, linspace, vander, set_printoptions
-from numpy.linalg import qr, norm, solve, cond
-from pylab import plot, title, figure, xlabel, ylabel
+import numpy as np
+import pylab as pl
 from leastsq import polynomial_fit, polynomial_value
-from math import log10
 
 #
 # 1. Ajustement polynomial par la décomposition QR
 print(u"")
 print(u"1. Ajustement polynomial par la décomposition QR")
-t = array(
+t = np.array(
     [
         1971.0,
         1975.0,
@@ -35,7 +38,7 @@ t = array(
         2019.0,
     ]
 )
-y = array(
+y = np.array(
     [0.3104, 0.4211, 0.6484, 0.7324, 0.9832, 1.233, 1.562, 1.889, 2.245, 3.227, 4.233]
 )
 #
@@ -43,15 +46,15 @@ y = array(
 print(u"")
 print(u"Résoudre par QR")
 n = 3
-X = vander(t, n)
-Q, R = qr(X)
+X = np.vander(t, n)
+Q, R = np.linalg.qr(X)
 print(u"Q=")
 print(Q)
 print(u"R=")
 print(R)
-print(u"log10(cond(R))=", log10(cond(R)))
+print(u"log10(cond(R))=", np.log10(np.linalg.cond(R)))
 z = Q.T @ y
-beta = solve(R, z)
+beta = np.linalg.solve(R, z)
 print(u"beta=")
 print(beta)
 
@@ -61,21 +64,21 @@ print(u"")
 print(u"2. Utiliser polynomial_fit et polynomial_value")
 beta = polynomial_fit(t, y, 3)
 print(u"beta=", beta)
-u = linspace(1970, 2040, 100)
+u = np.linspace(1970, 2040, 100)
 v = polynomial_value(beta, u)
 # Faire un dessin
-figure()
-plot(t, y, "o")
-plot(u, v, "r-")
-xlabel(u"")
-ylabel(u"Milliards")
-title(u"Ajustement polynomial (QR)")
+pl.figure()
+pl.plot(t, y, "o")
+pl.plot(u, v, "r-")
+pl.xlabel(u"")
+pl.ylabel(u"Milliards")
+pl.title(u"Ajustement polynomial (QR)")
 
 # 3. Prédire le nombre de passagers en 2030
 print(u"")
 print(u"3. Prédire le nombre de passagers en 2030")
 beta = polynomial_fit(t, y, 3)
-u = array([2030.0])
+u = np.array([2030.0])
 pop = polynomial_value(beta, u)
 print(u"Passagers en 2030=", pop)
 
@@ -124,9 +127,9 @@ print(u"beta=", beta)
 print(u"")
 print(u"5. Vérifier les propriétés de QR")
 n = 3
-X = vander(t, n)
-Q, R = qr(X)
-set_printoptions(precision=5)
+X = np.vander(t, n)
+Q, R = np.linalg.qr(X)
+np.set_printoptions(precision=5)
 print(u"Q=")
 print(Q)
 print(u"R=")
@@ -134,9 +137,9 @@ print(R)
 print(u"Q[:,0] @ Q[:,1]=", Q[:, 0] @ Q[:, 1])
 print(u"Q[:,0] @ Q[:,2]=", Q[:, 0] @ Q[:, 2])
 print(u"Q[:,1] @ Q[:,2]=", Q[:, 1] @ Q[:, 2])
-print(u"norm(Q[:,0])=", norm(Q[:, 0]))
-print(u"norm(Q[:,1])=", norm(Q[:, 1]))
-print(u"norm(Q[:,2])=", norm(Q[:, 2]))
+print(u"norm(Q[:,0])=", np.linalg.norm(Q[:, 0]))
+print(u"norm(Q[:,1])=", np.linalg.norm(Q[:, 1]))
+print(u"norm(Q[:,2])=", np.linalg.norm(Q[:, 2]))
 #
 # 6. Prédire le nombre de passagers en 2030
 # avec des données normalisées
@@ -149,7 +152,7 @@ delta = (tmax - tmin) / 2.0
 tcentre = tmin + delta
 s = (t - tcentre) / delta
 beta = polynomial_fit(s, y, 2)
-u = array([2030.0])
+u = np.array([2030.0])
 s = (u - tcentre) / delta
 pop = polynomial_value(beta, s)
 print(u"Passagers en 2030=", pop)

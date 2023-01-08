@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Calcule la probabilité d'avoir une taille inférieure ou supérieure à 2 mètres, 
@@ -16,6 +16,9 @@ Table 209. cumulative percent distribution of population
 by height and sex : 2007-2008
 2012
 https://www.census.gov/compendia/statab/2012/tables/12s0209.pdf.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -31,7 +34,7 @@ def gausspdf(x, mu, sigma):
     return y
 
 
-mu = 1.7633
+mu = 1.763
 sigma = 0.0680
 n = 100
 x = np.linspace(mu - 3 * sigma, mu + 3 * sigma, n)

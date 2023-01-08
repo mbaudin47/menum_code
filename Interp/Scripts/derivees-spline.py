@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine la spline cubique et ses dérivées. 
 On considère la fonction f(x) = sin(x) pour x dans [0, 12]. 
@@ -8,6 +8,11 @@ On considère 7 points régulièrement répartis dans l'intervalle [0, 12],
 ce qui mène à une distance Delta x = 2 entre chaque noeud. 
 On dessine la spline interpolante P(x), ainsi que P'(x), P''(x) et P'''(x). 
 On observe que P'''(x) est constante par morceaux.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -86,31 +91,34 @@ def DrawSplineDerivatives(
     if plot_data:
         pl.plot(x, y, "o", color="tab:red")
     pl.plot(u, v, "-", color="tab:blue")
+    pl.tick_params(axis='x', bottom=False, labelbottom=False)
     pl.xlabel(u"")
-    pl.ylabel(u"P(x)")
-    pl.title(u"Spline %s." % (spline_type))
+    pl.ylabel(u"$P(x)$")
+    pl.title(u"Spline %s" % (spline_type))
     #
     pl.subplot(4, 1, 2)
     pl.plot(u, v1, "-", color="tab:blue")
     pl.xlabel(u"")
-    pl.ylabel(u"P'(x)")
+    pl.tick_params(axis='x', bottom=False, labelbottom=False)
+    pl.ylabel(u"$P'(x)$")
     #
     pl.subplot(4, 1, 3)
     pl.plot(u, v2, "-", color="tab:blue")
     pl.xlabel(u"")
-    pl.ylabel(u"P''(x)")
+    pl.tick_params(axis='x', bottom=False, labelbottom=False)
+    pl.ylabel(u"$P''(x)$")
     #
     pl.subplot(4, 1, 4)
     pl.plot(u, v3, "-", color="tab:blue")
-    pl.xlabel(u"x")
-    pl.ylabel(u"P'''(x)")
+    pl.xlabel(u"$x$")
+    pl.ylabel(u"$P'''(x)$")
     fig.set_figwidth(figure_width)
     fig.set_figheight(figure_height)
     pl.tight_layout()
     return fig
 
 
-def SetAxesForMySpline(ax, bottom=-2.5, top=2.5):
+def SetAxesForMySpline(ax, bottom=-1.8, top=1.8):
     """
     Configure the axes of the spline.
 
@@ -131,6 +139,10 @@ def SetAxesForMySpline(ax, bottom=-2.5, top=2.5):
 
 matplotlibpreferences.load_preferences()
 
+figure_width=2.0
+figure_height=2.7
+hspace = 0.1
+
 # Compute points to interpolate
 n_interpolation = 7
 delta_x = 2.0
@@ -150,14 +162,15 @@ fig = DrawSplineDerivatives(
     y,
     x_data,
     siderule="natural",
-    figure_width=3.0,
-    figure_height=4.0,
+    figure_width=figure_width,
+    figure_height=figure_height,
 )
 # Ajoute la fonction à approcher
 ax = fig.get_axes()
 ax[0].plot(x_data, y_data, "--", color="tab:orange")
-ax[0].legend(["Données", "Spline", "f"], loc="upper right", bbox_to_anchor=(1.6, 1.2))
+ax[0].legend(["Données", "Spline", "$f$"], loc="upper right", bbox_to_anchor=(2.0, 1.2))
 SetAxesForMySpline(fig.get_axes())
+pl.subplots_adjust(hspace=hspace)
 pl.savefig("derivees-spline-natural.pdf", bbox_inches="tight")
 
 # 2. Draw the not-a-knot spline and its derivatives
@@ -166,14 +179,15 @@ fig = DrawSplineDerivatives(
     y,
     x_data,
     siderule="not-a-knot",
-    figure_width=3.0,
-    figure_height=4.0,
+    figure_width=figure_width,
+    figure_height=figure_height,
 )
 # Ajoute la fonction à approcher
 ax = fig.get_axes()
 ax[0].plot(x_data, y_data, "--", color="tab:orange")
-ax[0].legend(["Données", "Spline", "f"], loc="upper right", bbox_to_anchor=(1.6, 1.2))
+ax[0].legend(["Données", "Spline", "$f$"], loc="upper right", bbox_to_anchor=(2.0, 1.2))
 SetAxesForMySpline(fig.get_axes())
+pl.subplots_adjust(hspace=hspace)
 pl.savefig("derivees-spline-notaknot.pdf", bbox_inches="tight")
 
 # 3. Draw the natural spline and its derivatives (no function value)
@@ -183,8 +197,9 @@ fig = DrawSplineDerivatives(
     x_data,
     siderule="natural",
     plot_data=False,
-    figure_width=3.0,
-    figure_height=4.0,
+    figure_width=figure_width,
+    figure_height=figure_height,
 )
 SetAxesForMySpline(fig.get_axes(), bottom=-1.5, top=1.5)
+pl.subplots_adjust(hspace=hspace)
 pl.savefig("derivees-spline-raw.pdf", bbox_inches="tight")

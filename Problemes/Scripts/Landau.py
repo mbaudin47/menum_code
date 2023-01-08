@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Démonstration de la notation de Landau
 quand x tend vers l'infini.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -38,13 +43,13 @@ x = np.linspace(x0 - 0.5, x0 + 0.5)
 p = poly_p(x)
 q = poly_q(x)
 #
-pl.figure(figsize=(2.5, 1.0))
+pl.figure(figsize=(1.5, 1.0))
 pl.plot(x, p, "-", label="$5 x^3 - 6 x^2 + 3$")
 pl.plot(x, q, "--", label="$14 x^3$")
 pl.plot([x0, x0], [0.0, poly_q(x0)], "k:")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.title(r"Notation de Landau quand $x\rightarrow +\infty$")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+#pl.title(r"Notation de Landau quand $x\rightarrow +\infty$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("Landau-x0un.pdf", bbox_inches="tight")
 
@@ -73,8 +78,8 @@ pl.plot(x, p, "-", label="$5 x^3 - 6 x^2 + 3$")
 pl.plot(x, q, "--", label="$5 x^3$")
 pl.plot([x0, x0], [0.0, poly_qmin(x0)], "k:")
 pl.text(x0 + 0.03, poly_qmin(x0) - 1.5, "$x_0$=%.4f" % (x0))
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(r"Notation de Landau quand $x\rightarrow +\infty$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("Landau-x0-exact.pdf", bbox_inches="tight")
@@ -101,8 +106,8 @@ pl.plot(x, p, "-", label="$5 x^3 - 6 x^2 + 3$")
 pl.plot(x, q, "--", label="$14 x^3$")
 pl.plot([x0, x0], [-50.0, poly_q(x0)], "k:")
 pl.text(x0 - 1.0, poly_q(x0) + 30.0, "$x_0$=%.4f" % (x0))
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(r"Notation de Landau quand $x\rightarrow +\infty$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("Landau-xmin.pdf", bbox_inches="tight")
@@ -127,8 +132,8 @@ pl.plot(x, p, "-", label="$|5 x^3 - 6 x^2 + 3|$")
 pl.plot(x, q, "--", label="%d" % (M))
 pl.plot([-delta, -delta], [0.0, M], "k:")
 pl.plot([delta, delta], [0.0, M], "k:")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.title(r"Notation de Landau quand $x\rightarrow 0$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("Landau-zero.pdf", bbox_inches="tight")

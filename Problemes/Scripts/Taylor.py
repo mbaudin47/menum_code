@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Polynôme de Taylor pour la fonction sin au voisinage de 
 x=0.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import linspace, sin
@@ -35,8 +40,8 @@ pl.plot(x, y, "-", label="$\sin$")
 pl.plot(x, y1, "--", label="$P_1$")
 pl.plot(x, y3, ":", label="$P_3$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.savefig("Taylor.pdf", bbox_inches="tight")
 
 x = 0.5

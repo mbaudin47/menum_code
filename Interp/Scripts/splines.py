@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Interpolation d'une table de 6 observations par une spline cubique par 
 morceaux.
@@ -9,6 +9,11 @@ Cette dernière utilise d'autres conditions aux bords, ce qui change
 un peu le comportement de la spline sur les extrémités.
 
 Examples of spline interpolation.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import linspace, arange, array
 from pylab import plot, title, figure

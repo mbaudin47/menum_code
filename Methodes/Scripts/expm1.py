@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre la fonction expm1 en action.
 Dessine l'evolution du conditionnement de exp(x)-1 en fonction de x.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from floats import computeDigits, relativeError, expm1Cond
 import numpy as np
@@ -68,7 +73,6 @@ c = expm1Cond(x)
 pl.figure(figsize=(2.5, 2.5))
 #
 pl.subplot(2, 1, 1)
-pl.suptitle(u"Cond. de la fonction expm1")
 pl.plot(x, y, "-")
 pl.ylabel(u"expm1(x)")
 #

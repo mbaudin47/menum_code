@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise numpy pour résoudre un système d'équations linéaires. 
 Résout un système d'équations linéaires par décomposition PA = LU. 
 Montre un exemple de résolution avec un pivot nécessaire.
 Montre un exemple de matrice mal conditionnée.
 Résout plusieurs problèmes avec un seul appel à solve().
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import array, inf
 from numpy.linalg import solve, cond

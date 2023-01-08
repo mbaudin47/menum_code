@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Calcule des dérivées par différences finies sur le problème 
 de la chute d'un objet dans un fluide.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -48,7 +53,7 @@ pl.plot(t, z, "-")
 pl.plot(topt, fopt, "o")
 pl.xlabel(u"Temps (s)")
 pl.ylabel(u"Altitude (m)")
-pl.title(u"Jet d'une masse dans un fluide visqueux.")
+pl.title(u"Jet d'une masse dans un fluide visqueux")
 pl.savefig("chute.pdf", bbox_inches="tight")
 
 # Calcul de la dérivée première

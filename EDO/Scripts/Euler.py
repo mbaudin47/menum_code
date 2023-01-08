@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise la méthode d'Euler pour calculer la solution du problème de 
 l'oscillateur harmonique. 
@@ -11,6 +11,11 @@ Utilise la méthode d'Euler pour calculer la solution du problème-test, c'est
 Uses Euler' method to simulate the harmonic oscillator. 
 Uses Euler' method to solve the test problem, i.e. the problem with 
 exponential solution. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import linspace, pi, cos, sin, array
 from numpy.linalg import norm
@@ -74,16 +79,16 @@ yexact = yexact.T
 
 # 2.3 Phase plot
 print(u"2.3 Phase plot")
-pl.figure(figsize=(2.5, 1.5))
+pl.figure(figsize=(2.0, 1.0))
 pl.plot(yout[:, 0], yout[:, 1], "-+", label="Euler")
 pl.plot(yexact[:, 0], yexact[:, 1], "--", label="Exact")
 pl.axis("equal")
 pl.axis([-1.2, 1.4, -1.4, 1.6])
-pl.xlabel(u"y[0]")
-pl.ylabel(u"y[1]")
+pl.xlabel(u"\\tt{y[0]}")
+pl.ylabel(u"\\tt{y[1]}")
 pl.legend(bbox_to_anchor=(1.0, 1.0, 0.0, 0.0))
-pl.title(u"Diagramme de phase.")
-pl.savefig("euler.pdf", bbox_inches="tight")
+pl.title(u"Diagramme de phase")
+pl.savefig("Euler.pdf", bbox_inches="tight")
 
 ###############################################
 #
@@ -138,5 +143,5 @@ pl.plot(texact, yexact, "--")
 pl.legend(("Euler", "Exact"), loc=2)
 pl.xticks(list(range(5)))
 pl.title(u"ODE linéaire")
-pl.xlabel(u"t")
-pl.ylabel(u"y")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")

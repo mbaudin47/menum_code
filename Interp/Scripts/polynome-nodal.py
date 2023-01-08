@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine le polynôme nodal. 
 C'est le polynôme 
@@ -10,6 +10,11 @@ w(x) = (x - x1) * (x - x2) * ... * (x - xn)
 pour tout x dans [-1, 1], où x1, x2, ..., xn sont les noeuds d'interpolation.
 On considère des noeuds sur une grille régulière dans [-1, 1]. 
 On observe le polynôme nodal avec n=3, n=4, n=5 et n=6.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -64,9 +69,9 @@ def PlotNodalPolynomial(n_nodes, n_points=100):
     # Figure 1 : 3 noeuds
     pl.plot(x_nodes, np.zeros((n_nodes,)), "o")
     pl.plot(x, y, "-")
-    pl.xlabel(u"x")
+    pl.xlabel(u"$x$")
     pl.ylabel(r"$\omega_%d(x)$" % (n_nodes))
-    pl.title(u"n=%d" % (n_nodes))
+    pl.title(u"$n=%d$" % (n_nodes))
     pl.ylim(-0.5, 0.5)
     return
 

@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre les nombres à virgule flottante: normalisés, dénormalisés, en 
 échelle logarithmique, positifs, négatifs.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from floats import floatgui
 import pylab as pl
@@ -70,10 +75,16 @@ for f in allfloats:
 # 6. Avec les denormalises et les négatifs
 print(u"")
 print(u"5. Avec les denormalises")
-allfloats = floatgui(withdenormals=True, allpositive=False)
+p = 3
+emin = -2
+emax = 3
+allfloats = floatgui(p, emin, emax, withdenormals=True, allpositive=False)
 print(u"Floats=")
 for f in allfloats:
     print(f)
+pl.xlabel("$x$")
+pl.title("Système flottant, $p=%d$, $e_{min}=%d$, $e_{max}=%d$" % (
+    p, emin, emax))
 fig = pl.gcf()
 fig.set_size_inches(4.0, 0.5)
 pl.savefig("flottants.pdf", bbox_inches="tight")

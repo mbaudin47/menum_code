@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 On considère une table de 5 points et on compare l'interpolation et 
 l'ajustement polynomial par un polynôme de degré 1.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -31,7 +36,7 @@ fig = pl.figure(figsize=(2.0, 1.2))
 pl.plot(x, y, "o")
 pl.plot(u, v_interpolation, "-", label="Interpolation")
 pl.plot(u, v_moindrescarres, "--", label="Ajustement")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("interpolation-ajustement.pdf", bbox_inches="tight")

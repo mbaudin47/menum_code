@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Considère 17 observations de la résistivité du cuivre en fonction de la 
 température. 
@@ -17,13 +17,13 @@ Cuivre :
 
 References
 ----------
-Department of physics
-Czech Technical University in Prague
-2011
+Department of physics, Czech Technical University in Prague, 2011
 "Determination of temperature 
 coefficient of resistance of metals"
 http://aldebaran.feld.cvut.cz/vyuka/physics_1/Labs/Lab1sample.pdf
 
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import pylab as pl

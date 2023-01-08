@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Considère une table de 6 points entre 0 et 5. 
 Dessine le graphique produit par la fonction "plot" : c'est une interpolation 
@@ -10,6 +10,11 @@ polynôme global.
 
 Perform piecewise linear interpolation. 
 Compare with global polynomial interpolation.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -54,8 +59,8 @@ v = piecewise_linear(x, y, u)
 pl.plot(u, v, "-", label=u"Linéaire")
 v = polynomial_interpolation(x, y, u)
 pl.plot(u, v, "--", label=u"Polynomial")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 # title(u"Piecewise linear interpolation")
-pl.savefig("compare-linear-fullpoly.pdf", bbox_inches="tight")
+pl.savefig("linear.pdf", bbox_inches="tight")

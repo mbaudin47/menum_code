@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Dessine le principe de la quadrature.
+
+Références
+----------
+Cleve Moler. Numerical Computing with Matlab. Society for
+Industrial Mathematics, 2004.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -34,6 +42,7 @@ height = 1.0
 fig = pl.figure(figsize=(width, height))
 pl.plot(x, y, "-")
 pl.fill_between(u, 0.0, v, color="tab:orange")
+"""
 ax = fig.get_axes()
 major_ticks = np.linspace(a, b, 3)
 ax[0].set_xticks(major_ticks)
@@ -42,8 +51,9 @@ delta_minor = 0.1
 ax[0].set_xticks(np.arange(a - 0.3, b + 0.4, delta_minor), minor=True)
 ax[0].set_yticks(np.arange(a, b, delta_minor), minor=True)
 pl.grid(which="both")
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+"""
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 pl.savefig("principe-quadrature.pdf", bbox_inches="tight")
 
 # Compte les carrés entièrement sous la courbe
@@ -69,8 +79,8 @@ ax[0].set_yticks(major_ticks)
 ax[0].set_xticks(np.arange(a - 0.3, b + 0.4, h), minor=True)
 ax[0].set_yticks(np.arange(a, b, h), minor=True)
 pl.grid(which="both")
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 n_carres_dessous = 0
 n_carres_au_dessus = 0
 for i in range(n - 1):

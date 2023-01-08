@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre comment approcher une table de valeurs par un polynôme de 
 degré constant par morceau, linéaire par morceau ou un polynôme 
@@ -11,6 +11,11 @@ utilise une interpolation linéaire par morceaux.
 Calcule l'erreur absolue entre la fonction et son interpolant lorsqu'on 
 utilise une interpolation polynomiale globale associée aux noeuds 
 de Chebyshev.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -49,24 +54,24 @@ y = np.sin(x)
 for i in range(number_of_data_points):
     print(u"x=%.1f, y=%.4f" % (x[i], y[i]))
 
-figure_width = 2.0
+figure_width = 1.5
 figure_height = 1.0
 
 # Figure 1
 fig = pl.figure(figsize=(figure_width, figure_height))
 pl.plot(x, y, "o")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.title(u"Données.")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+#pl.title(u"Données.")
 SetAxesForMyGraph(fig)
 pl.savefig("interpolation-degre-donnees.pdf", bbox_inches="tight")
 
 # Figure 2 : interpolation constante
 fig = pl.figure(figsize=(figure_width, figure_height))
 pl.plot(x, y, "o")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.title(u"Interpolation constante par morceaux.")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+#pl.title(u"Constante par morceaux.")
 delta = step / 2.0
 for i in range(number_of_data_points):
     pl.plot([x[i] - delta, x[i] + delta], [y[i], y[i]], "-", color="tab:orange")
@@ -80,9 +85,9 @@ v = interp.piecewise_linear(x, y, u)
 
 fig = pl.figure(figsize=(figure_width, figure_height))
 pl.plot(x, y, "o")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.title(u"Interpolation linéaire par morceaux.")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+#pl.title(u"Linéaire par morceaux.")
 delta = step / 2.0
 pl.plot(u, v, "-", color="tab:orange")
 SetAxesForMyGraph(fig)
@@ -95,9 +100,9 @@ v = interp.polynomial_interpolation(x, y, u)
 
 fig = pl.figure(figsize=(figure_width, figure_height))
 pl.plot(x, y, "o")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.title(u"Interpolation polynomiale (globale).")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+#pl.title(u"Interpolation polynomiale (globale).")
 delta = step / 2.0
 pl.plot(u, v, "-", color="tab:orange")
 SetAxesForMyGraph(fig)
@@ -118,9 +123,9 @@ v = interp.polynomial_interpolation(x, y, u)
 error_global = np.abs(v - np.sin(u))
 
 fig = pl.figure(figsize=(figure_width, figure_height))
-pl.plot(u, error_piecewise, "-", label="Lin.p.m.")
+pl.plot(u, error_piecewise, "-", label="Lin. p. m.")
 pl.plot(u, error_global, "--", label="Polynôme")
-pl.xlabel(u"x")
+pl.xlabel(u"$x$")
 pl.ylabel(u"Erreur abs.")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("interpolation-degre-erreur.pdf", bbox_inches="tight")
@@ -143,7 +148,7 @@ error_global = np.abs(v - np.sin(u))
 fig = pl.figure(figsize=(figure_width, figure_height))
 pl.plot(u, error_piecewise, "-", label="Equidistant")
 pl.plot(u, error_global, "--", label="Chebyshev")
-pl.xlabel(u"x")
+pl.xlabel(u"$x$")
 pl.ylabel(u"Erreur abs.")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.savefig("interpolation-degre-Chebyshev-erreur.pdf", bbox_inches="tight")

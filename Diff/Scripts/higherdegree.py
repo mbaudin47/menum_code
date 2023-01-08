@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Calcule des dérivées numériques de degré élevé. 
 Calcule les dérivées jusqu'à l'ordre 4 d'un polynôme de degré 4. 
@@ -9,6 +9,11 @@ Calcule la dérivée d'ordre 10 des fonctions exp et sin.
 Compute numerical derivatives of higher degree.
 Compute derivatives up to the 4th order of a degree 4 polynomial.
 Compute order 10 derivatives of exp and sin functions.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from floats import computeDigits
 from pylab import plot, title, figure
