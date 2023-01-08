@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On considère la fonction de Runge :
     
@@ -15,6 +15,11 @@ de ces dérivées augmente rapidement quand l'ordre de dérivation augmente.
 
 See the Runge phenomenon with interpolating polynomials of degrees 5 and 9. 
 See the Runge function and its derivatives f', f'', f'''.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import linspace
 import pylab as pl
@@ -37,7 +42,7 @@ x = linspace(-1, 1, 100)
 y = runge(x)
 #
 pl.figure(figsize=(2.0, 1.0))
-pl.plot(x, y, ":", label="f(x)")
+pl.plot(x, y, ":", label="$f(x)$")
 #
 # Degree 5 (6 points)
 x = linspace(-1, 1, 6)
@@ -57,8 +62,8 @@ pl.plot(x, y, ".")
 #
 pl.title(u"Le phénomène de Runge")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.savefig("runge-interpolation.pdf", bbox_inches="tight")
 
 # Derivees de f
@@ -87,19 +92,19 @@ fig = pl.figure(figsize=(4.0, 2.5))
 pl.suptitle(u"Dérivées de la fonction de Runge", y=0.95)
 pl.subplot(2, 2, 1)
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y=f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y=f(x)$")
 pl.subplot(2, 2, 2)
 pl.plot(x, yp, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y=f'(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y=f'(x)$")
 pl.subplot(2, 2, 3)
 pl.plot(x, ypp, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y=f''(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y=f''(x)$")
 pl.subplot(2, 2, 4)
 pl.plot(x, yppp, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y=f'''(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y=f'''(x)$")
 fig.tight_layout()
 pl.savefig("runge-derivees.pdf", bbox_inches="tight")

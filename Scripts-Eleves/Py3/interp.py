@@ -1,6 +1,11 @@
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Functions for polynomial interpolation.
+
+Reference
+---------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -55,7 +60,7 @@ def polynomial_interpolation(x, y, u):
         # j=0,...,k-1,k+1,...,n-1
         for j in list(range(k)) + list(range(k + 1, n)):
             # Elementwise product
-            w = (u - x[j]) / (x[k] - x[j]) * w
+            w = w * (u - x[j]) / (x[k] - x[j])
         v = v + w * y[k]
     return v
 

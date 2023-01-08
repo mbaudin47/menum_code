@@ -1,6 +1,11 @@
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 A collection of functions to compute the solution of non linear equations.
+
+Reference
+---------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import sys
@@ -69,7 +74,7 @@ def _function_plot(f, a, b, N=100, *args):
     return None
 
 
-def bisection(f, a, b, reltolx=None, verbose=False, *args):
+def bisection(f, a, b, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by bisection.
 
@@ -121,8 +126,12 @@ def bisection(f, a, b, reltolx=None, verbose=False, *args):
         The right boundary
     reltolx : float
         The relative tolerance on x.
-        We must have reltolx>0.
+        We must have reltolx > 0.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
 
@@ -164,7 +173,7 @@ def bisection(f, a, b, reltolx=None, verbose=False, *args):
     if np.sign(fa) == np.sign(fb):
         raise ValueError(u"The interval (a,b) does not bracket a root")
     k = 0
-    while abs(b - a) > reltolx * max([abs(b), 1.0]):
+    while abs(b - a) > reltolx * abs(b) + abstolx:
         c = (a + b) / 2.0
         fc = f(c, *args)
         history.append(c)
@@ -184,7 +193,7 @@ def bisection(f, a, b, reltolx=None, verbose=False, *args):
     return c, history
 
 
-def bisectiongui(f, a, b, reltolx=None, *args):
+def bisectiongui(f, a, b, reltolx=None, abstolx=0.0, *args):
     """
     Solves f(x)=0 by bisection and plots the intermediate approximate roots.
 
@@ -202,6 +211,10 @@ def bisectiongui(f, a, b, reltolx=None, *args):
         The relative tolerance on x.
         We must have reltolx>0.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     *args : list
         The extra input arguments for f.
 
@@ -224,11 +237,11 @@ def bisectiongui(f, a, b, reltolx=None, *args):
     N = 100
     _function_plot(f, a, b, N, *args)
     verbose = False
-    c, history = bisection(_compute_and_plot, a, b, reltolx, verbose, f, *args)
+    c, history = bisection(_compute_and_plot, a, b, reltolx, abstolx, verbose, f, *args)
     return c, history
 
 
-def newton(f, x0, fprime, reltolx=None, verbose=False, *args):
+def newton(f, x0, fprime, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by Newton-Raphson.
 
@@ -273,6 +286,10 @@ def newton(f, x0, fprime, reltolx=None, verbose=False, *args):
     reltolx : float
         The relative tolerance on x.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -304,7 +321,7 @@ def newton(f, x0, fprime, reltolx=None, verbose=False, *args):
     x = x0
     history = [x0]
     k = 0
-    while abs(x - xprev) > reltolx * max([abs(x), 1.0]):
+    while abs(x - xprev) > reltolx * abs(x) + abstolx:
         xprev = x
         fx = f(x, *args)
         if verbose:
@@ -320,7 +337,7 @@ def newton(f, x0, fprime, reltolx=None, verbose=False, *args):
     return x, history
 
 
-def newtongui(f, x0, fprime, reltolx=None, *args):
+def newtongui(f, x0, fprime, reltolx=None, abstolx=0.0, *args):
     """
     Solves f(x)=0 by newton and
     plots the intermediate approximate roots computed
@@ -339,6 +356,10 @@ def newtongui(f, x0, fprime, reltolx=None, *args):
     reltolx : float
         The relative tolerance on x.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     *args : list
         The extra input arguments for f.
 
@@ -364,7 +385,7 @@ def newtongui(f, x0, fprime, reltolx=None, *args):
     """
     verbose = False
     c, history = newton(
-        _newton_fplot, x0, _newton_fprime_plot, reltolx, verbose, f, fprime, *args
+        _newton_fplot, x0, _newton_fprime_plot, reltolx, abstolx, verbose, f, fprime, *args
     )
     return c, history
 
@@ -421,7 +442,7 @@ def _newton_fprime_plot(x, f, fprime, *args):
     return y
 
 
-def secant(f, a, b, reltolx=None, verbose=False, *args):
+def secant(f, a, b, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by secant's method.
 
@@ -471,6 +492,10 @@ def secant(f, a, b, reltolx=None, verbose=False, *args):
     reltolx : float
         The relative tolerance on x, reltolx>0.
         Default is twice the machine epsilon
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -509,7 +534,7 @@ def secant(f, a, b, reltolx=None, verbose=False, *args):
     if np.sign(fa) == np.sign(fb):
         raise ValueError(u"The interval (a,b) does not bracket a root")
     k = 0
-    while abs(b - a) > reltolx * max(abs(b), 1.0):
+    while abs(b - a) > reltolx * abs(b) + abstolx:
         c = a  # c=x(n-1)
         fc = fa
         a = b  # a=x(n)
@@ -528,7 +553,7 @@ def secant(f, a, b, reltolx=None, verbose=False, *args):
     return b, history
 
 
-def secantgui(f, a, b, reltolx=None, *args):
+def secantgui(f, a, b, reltolx=None, abstolx=0.0, *args):
     """
     Solves f(x)=0 by secant and plots the intermediate approximate roots.
 
@@ -545,6 +570,10 @@ def secantgui(f, a, b, reltolx=None, *args):
     reltolx : float
         The relative tolerance on x, reltolx>0.
         Default is twice the machine epsilon
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     *args : list
         The extra input arguments for f.
 
@@ -567,11 +596,11 @@ def secantgui(f, a, b, reltolx=None, *args):
     N = 100
     _function_plot(f, a, b, N, *args)
     verbose = False
-    c, history = secant(_compute_and_plot, a, b, reltolx, verbose, f, *args)
+    c, history = secant(_compute_and_plot, a, b, reltolx, abstolx, verbose, f, *args)
     return c, history
 
 
-def zeroin(f, a, b, reltolx=None, verbose=False, *args):
+def zeroin(f, a, b, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by Dekker-Brent algorithm.
 
@@ -639,6 +668,10 @@ def zeroin(f, a, b, reltolx=None, verbose=False, *args):
     reltolx : float
         The relative tolerance on x, reltolx > 0.
         Default is twice the machine epsilon
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -708,7 +741,7 @@ def zeroin(f, a, b, reltolx=None, verbose=False, *args):
             fa = fc
         # Test convergence
         m = 0.5 * (a - b)
-        tol = reltolx * max(abs(b), 1.0)
+        tol = reltolx * abs(b) + abstolx
         if abs(m) <= tol or fb == 0.0:
             break
         # Choose bisection or interpolation
@@ -766,7 +799,7 @@ def zeroin(f, a, b, reltolx=None, verbose=False, *args):
     return b, history
 
 
-def zeroingui(f, a, b, reltolx=None, verbose=False, *args):
+def zeroingui(f, a, b, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by a combination of bisection, secant and IQI, and plot.
 
@@ -787,6 +820,10 @@ def zeroingui(f, a, b, reltolx=None, verbose=False, *args):
     reltolx : float
         The relative tolerance on x, reltolx > 0.
         Default is twice the machine epsilon
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -814,7 +851,7 @@ def zeroingui(f, a, b, reltolx=None, verbose=False, *args):
     """
     N = 100
     _function_plot(f, a, b, N, *args)
-    b, history = zeroin(_compute_and_plot, a, b, reltolx, verbose, f, *args)
+    b, history = zeroin(_compute_and_plot, a, b, reltolx, abstolx, verbose, f, *args)
     return b, history
 
 
@@ -1185,7 +1222,7 @@ def test_problems():
     return test_collection
 
 
-def iqi(f, a, b, c, reltolx=None, verbose=False, *args):
+def iqi(f, a, b, c, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by Inverse Quadratic Interpolation.
 
@@ -1232,6 +1269,10 @@ def iqi(f, a, b, c, reltolx=None, verbose=False, *args):
         The relative tolerance on x.
         We must have reltolx>0.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -1260,7 +1301,7 @@ def iqi(f, a, b, c, reltolx=None, verbose=False, *args):
     fb = f(b, *args)
     fc = f(c, *args)
     k = 0
-    while abs(c - b) > reltolx * max(abs(c), 1.0):
+    while abs(c - b) > reltolx * abs(c) + abstolx:
         if fa == fb or fa == fc or fb == fc:
             print(u"Warning : Cannot interpolate!")
             print(u"a=", a, ", fa=", fa)
@@ -1283,7 +1324,7 @@ def iqi(f, a, b, c, reltolx=None, verbose=False, *args):
     return c, history
 
 
-def iqigui(f, a, b, c, reltolx=None, verbose=False, *args):
+def iqigui(f, a, b, c, reltolx=None, abstolx=0.0, verbose=False, *args):
     """
     Solves f(x)=0 by Inverse Quadratic Interpolation
     and plot intermediate points of the iterations the algorithm.
@@ -1302,6 +1343,10 @@ def iqigui(f, a, b, c, reltolx=None, verbose=False, *args):
         The relative tolerance on x.
         We must have reltolx>0.
         Default is twice the machine epsilon.
+    abstolx : float
+        The absolute tolerance on x.
+        We must have abstolx > 0.
+        Default is zero.
     verbose : bool
         If True, print intermediate messages.
     *args : list
@@ -1333,7 +1378,7 @@ def iqigui(f, a, b, c, reltolx=None, verbose=False, *args):
     pl.xlabel(u"x")
     pl.ylabel(u"f(x)")
     # Compute
-    c, history = iqi(_compute_and_plot, a, b, c, reltolx, verbose, f, *args)
+    c, history = iqi(_compute_and_plot, a, b, c, reltolx, abstolx, verbose, f, *args)
     return c, history
 
 
@@ -1382,7 +1427,10 @@ if __name__ == "__main__":
 
     a = 2.0
     b = 3.0
-    xs, history = newton(myFPar, 1.0, myFPrimePar, None, False, a, b)
+    reltolx = None
+    abstolx = 0.0
+    verbose = False
+    xs, history = newton(myFPar, 1.0, myFPrimePar, reltolx, abstolx, verbose, a, b)
     xexact = np.sqrt(b / a)
     np.testing.assert_almost_equal(xs, xexact, decimal=4)
     print(u"Approximate Solution:", xs)

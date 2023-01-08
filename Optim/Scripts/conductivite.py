@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On cherche à déterminer la conductivité optimale d'une laine de verre. 
 Cela revient à déterminer le minimum de la fonction 
@@ -18,6 +18,11 @@ On peut calculer b et c en fonction de rhoopt par l'équation :
 
 b = 0.001 / (50 + rhoopt ** 2 / 50)
 c = rhoopt ** 2 * b
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -61,11 +66,13 @@ x = np.linspace(30, 200)
 y = conduc(x, a, b, c)
 
 pl.figure(figsize=(2.0, 1.0))
-pl.ylabel(u"Conductivite (W/(m.K))")
-pl.xlabel(u"Densité (kg/$m^3$)")
 
 # Solve with gui
 reltolx = 1.0e-8
 xopt, fopt = goldensectiongui(conduc, 30.0, 200.0, reltolx, a, b, c)
 pl.plot(xopt, fopt, "*")
-pl.savefig("isover-conduction.pdf", bbox_inches="tight")
+#pl.ylabel(u"Conductivite (W/(m.K)")
+#pl.xlabel(u"Densité (kg/$m^3$)")
+pl.xlabel(u"$\\rho$")
+pl.ylabel(u"$\\lambda(\\rho)$")
+pl.savefig("conductivite.pdf", bbox_inches="tight")

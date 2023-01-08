@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Calcule des dérivées par des méthodes de différences finies. 
 Observe la sensibilité de la précision en fonction de la longueur 
@@ -10,6 +10,11 @@ Observe la sensibilité en fonction de l'ordre de précision de la méthode.
 Compute numerical derivatives with finite difference methods.
 See the sensitivity of the accuracy depending on the step size. 
 See the sensitivity of the order of precision of the method. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 from floats import computeDigits
@@ -76,8 +81,8 @@ pl.figure(figsize=(2.0, 1.2))
 pl.plot(h, e, "-", label="Observé")
 pl.plot(h, e_modele, "--", label="Modèle")
 pl.xlabel(r"$h$")
-pl.ylabel(r"$E_{abs}$")
-pl.title(u"Calcule f' par différences finies.")
+pl.ylabel(r"$e_{abs}$")
+pl.title(u"Calcul de $f'$ par différences finies")
 pl.xscale("log")
 pl.yscale("log")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
@@ -109,12 +114,12 @@ for i in range(n):
     d2[i] = computeDigits(exact, g, 10)
 
 pl.figure(figsize=(4, 3))
-pl.plot(np.log10(h), d1, "-", label="p=1")
-pl.plot(np.log10(h), d2, "--", label="p=2")
+pl.plot(np.log10(h), d1, "-", label="$p=1$")
+pl.plot(np.log10(h), d2, "--", label="$p=2$")
 pl.xlabel(r"$\log_{10}(h)$")
 pl.ylabel(u"Nombre de chiffres")
 pl.legend()
-pl.title(u"Calcule f' par différences finies.")
+pl.title(u"Calcul de $f'$ par différences finies")
 
 #
 # 2.3 Plot digits
@@ -130,7 +135,7 @@ pl.figure(figsize=(4, 3))
 pl.plot(np.log10(h), d, "-")
 pl.xlabel(r"$\log_{10}(h)$")
 pl.ylabel(u"Nombre de chiffres")
-pl.title(u"Calcule f' par différences finies.")
+pl.title(u"Calcul de $f'$ par différences finies")
 
 #
 # 1. Compute a derivative with 3 methods
@@ -174,14 +179,14 @@ for i in range(n):
     d4[i] = computeDigits(exact, g, 10)
 
 pl.figure(figsize=(2.0, 1.0))
-pl.plot(np.log10(h), d1, "-", label="p=1")
-pl.plot(np.log10(h), d2, "--", label="p=2")
-pl.plot(np.log10(h), d4, ":", label="p=4")
+pl.plot(np.log10(h), d1, "-", label="$p=1$")
+pl.plot(np.log10(h), d2, "--", label="$p=2$")
+pl.plot(np.log10(h), d4, ":", label="$p=4$")
 pl.xlabel(r"$\log_{10}(h)$")
 pl.ylabel(u"Nb. de chiffres")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
 pl.ylim(top=16.0)
-pl.title(u"Calcule f' par différences finies.")
+pl.title(u"Calcul de $f'$ par différences finies")
 pl.savefig("fprime-trois-formules.pdf", bbox_inches="tight")
 
 # Refaire avec la fonction suivante.

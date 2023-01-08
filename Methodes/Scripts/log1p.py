@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre la fonction log1p sur des exemples choisis.
 Dessine le conditionnement de la fonction log1p en fonction de x.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from floats import computeDigits, relativeError, logCond, log1pCond
 import numpy as np
@@ -66,17 +71,16 @@ x = np.linspace(-0.5, 0.5, N)
 y = np.log1p(x)
 c = log1pCond(x)
 #
-pl.figure(figsize=(2.5, 2.5))
+pl.figure(figsize=(1.5, 1.5))
 #
 pl.subplot(2, 1, 1)
-pl.suptitle(u"Cond. de la fonction log1p")
 pl.plot(x, y, "-")
 pl.ylim(bottom=-1.0, top=0.5)
 pl.ylabel(u"log1p(x)")
 #
 pl.subplot(2, 1, 2)
 pl.plot(x, c, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"Cond. de log1p")
-pl.subplots_adjust(hspace=0.3)
+pl.xlabel(u"$x$")
+pl.ylabel(u"Cond. log1p")
+pl.subplots_adjust(hspace=0.7)
 pl.savefig("log1p.pdf", bbox_inches="tight")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Compare plusieurs méthodes sur le problème test :
     * Euler
@@ -13,6 +13,11 @@ y'(t) = a * y(t),  t >= 0
 y(0) = 1
 
 avec a = 1.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import linspace, exp
@@ -57,6 +62,6 @@ pl.plot(texact, yexact, "-", label="Exact")
 pl.legend(loc=2)
 pl.xticks(range(5))
 pl.title(u"ODE linéaire")
-pl.xlabel(u"t")
-pl.ylabel(u"y")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
 pl.savefig("probleme-test.pdf", bbox_inches="tight")

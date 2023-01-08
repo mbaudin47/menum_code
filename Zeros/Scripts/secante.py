@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise la méthode de la sécante pour calculer une approximation de sqrt(2) 
 par résolution de l'équation non linéaire x^2 - 2 = 0. 
@@ -11,6 +11,11 @@ Use the secant method to compute sqrt(2) by resolution of the
 equation x^2 - 2 = 0. 
 Compute the number of accurate digits during the intermediate 
 iterations of the algorithm. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from math import sqrt
 from fzero import secant, secantgui

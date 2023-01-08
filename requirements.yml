@@ -1,0 +1,7 @@
+# run: conda env create --file environment.yml
+name: menum_public
+dependencies:
+- python==3.9
+- numpy>=1.16.*
+- scipy>=1.*
+- matplotlib>=2.*

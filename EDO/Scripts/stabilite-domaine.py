@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre le domaine de stabilité de plusieurs méthodes numériques 
-pour les EDOs :
+pour les EDO :
     * Euler explicite
     * Heun
+
+Références
+----------
+Randall J. Leveque. Finite Difference Methods for Ordinary and Partial 
+Differential Equations. SIAM, 2007.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import linspace, meshgrid
@@ -16,7 +24,7 @@ import matplotlibpreferences
 matplotlibpreferences.load_preferences()
 
 #
-pl.figure(figsize=(2.0, 1.1))
+pl.figure(figsize=(1.3, 1.1))
 n = 100
 x = linspace(-5, 5, n)
 y = linspace(-5, 5, n)
@@ -33,7 +41,7 @@ pl.text(0.3, 1.0, "Heun")
 pl.axis("equal")
 pl.xlim([-2.5, 1.5])
 pl.ylim([-2.0, 2.0])
-pl.xlabel(u"Re(z)")
-pl.ylabel(u"Im(z)")
+pl.xlabel(u"$Re(z)$")
+pl.ylabel(u"$Im(z)$")
 pl.title(u"Domaine de stabilité")
 pl.savefig("stabilite-domaine.pdf", bbox_inches="tight")

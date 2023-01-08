@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Analyse du modèle logistique.
 
 Références
+----------
 Martin Braun. Differential equations and their applications, Fourth Edition. 
 Texts in applied mathematics. Springer, 1993.
 
 Morris W. Hirsch, Stephen Smale et Robert. L. Devaney. Differential 
 Equations, Dynamical Systems, and an introduction do chaos, Third
 Edition. Elsevier, 2013.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 
 """
 import pylab as pl
@@ -39,8 +43,8 @@ y = odeint(logistique, y0, t)
 pl.plot(t, y[:, 0], "-")
 pl.plot(t, np.ones(n_points), "k-")
 pl.plot(t, np.zeros(n_points), "k-")
-pl.xlabel(u"t")
-pl.ylabel(u"y")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
 pl.title(u"Modèle logistique.")
 
 # Plusieurs conditions initiales
@@ -51,9 +55,9 @@ for y_initial in np.linspace(-0.05, 1.5, 5):
     pl.plot(t, y[:, 0], "-")
 pl.plot(t, np.ones(n_points), "k-")
 pl.plot(t, np.zeros(n_points), "k-")
-pl.xlabel(u"t")
-pl.ylabel(u"y")
-pl.title(u"Modèle logistique.")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
+pl.title(u"Modèle logistique")
 pl.savefig("logistique-dynamique.pdf", bbox_inches="tight")
 
 # Vector field
@@ -70,9 +74,9 @@ dydt = dydt / s
 
 #
 pl.figure(figsize=(2.5, 1.5))
-pl.title(u"Modèle logistique.")
-pl.xlabel(u"t")
-pl.ylabel(u"y")
+pl.title(u"Modèle logistique")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
 pl.quiver(T, Y, dtdt, dydt, angles="xy")
 t = np.linspace(t_min, t_max, n_points)
 for y_initial in np.linspace(-0.05, 1.5, 5):

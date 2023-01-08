@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Explique le fonctionnement de l'interpolation linéaire par morceaux.
 On compare deux implémentation du calcul:
     - un calcul non vectorisé, fondé sur deux boucles imbriquées, combinées 
       à des conditions,
     - un calcul vectorisé fondé sur un une seule boucle for.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl

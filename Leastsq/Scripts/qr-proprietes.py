@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Considère l'évolution du transport mondial de passager entre 1971 et 2019. 
@@ -12,6 +12,11 @@ Vérifie que la matrice Q est orthogonale :
 proches de zéro,
 - évalue la norme des vecteurs colonnes de Q est montre qu'elles sont 
 proche de un.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import array, transpose, dot, vander, set_printoptions

@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Compare la spline naturelle et la spline not-a-knot. 
 On considère la fonction f(x) = sin(x) pour x dans [0, 2pi]. 
 On considère 4 noeuds d'interpolation. 
 On interpole les données par une spline naturelle et par une spline 
 not-a-knot.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -42,11 +47,11 @@ pl.plot(x, y, "o")
 v = spline_interpolation(x, y, u, siderule="natural")
 pl.plot(u, v, "-")
 v = spline_interpolation(x, y, u, siderule="not-a-knot")
-pl.plot(u, v, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
-pl.legend(["Fonction", "Données", "Naturelle", "Not-a-knot"], bbox_to_anchor=(1.0, 1.0))
-pl.title(u"Interpolation par spline.")
+pl.plot(u, v, "-.")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
+pl.legend(["Fonction", "Données", "Naturelle", "Not-a-knot"], bbox_to_anchor=(1.0, 1.1))
+pl.title(u"Interpolation par spline")
 fig.set_figwidth(2.0)
 fig.set_figheight(1.0)
 pl.ylim(top=1.5)

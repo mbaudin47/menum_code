@@ -1,9 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
-Draw the four rules of numerical integration.
+Draw five rules of numerical integration.
+
+Dessine plusieurs règles d'intégration sur une fonction test dont
+l'intégrale est connue.
+On expérimente la règle du point milieu, la règle du trapèze, la règle
+de Simpson, la règle de Simpson composite à deux sous-intervalles
+et la règle de Boole.
+
+La fonction test est :
+
+    f(x) = sin(2.5 * x) ** 2
+
+pour x dans [0, 1].
+
+Références
+----------
+Cleve Moler. Numerical Computing with Matlab. Society for
+Industrial Mathematics, 2004.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import linspace, vander, sin
 from numpy.linalg import solve
@@ -124,8 +144,8 @@ def plotBoole(f, a, b, *args):
 def configureplot(a, b):
     pl.xlim([-0.1, 1.1])
     pl.ylim([-0.1, 1.1])
-    pl.xlabel(u"x")
-    pl.ylabel(u"f(x)")
+    pl.xlabel(u"$x$")
+    pl.ylabel(u"$f(x)$")
     return
 
 
@@ -134,7 +154,7 @@ save = True
 #
 a = 0.0
 b = 1.0
-width = 1.5
+width = 1.0
 height = 1.0
 #
 pl.figure(figsize=(width, height))

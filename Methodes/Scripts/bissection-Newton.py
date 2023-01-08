@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Compare la convergence des méthodes de la dichotomie et de Newton sur des 
 exemples bien choisis.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from math import ceil, log
 from fzero import newton, bisection
@@ -50,7 +55,6 @@ pl.plot(x, y, "r-")
 pl.xlabel(u"x")
 pl.ylabel(u"X**2+X-1")
 pl.title(u"The function")
-# pl.savefig(")
 
 #
 # 3. Bisection
@@ -69,6 +73,8 @@ xexact = 0.68232780382801932737
 d = computeDigits(xexact, xs, 10)
 print(u"Correct decimal digits=", d)
 print(u"Iterations=", len(history))
+print("Historique de la bissection")
+print(history)
 #
 # 3.2 Faire un graphique
 print(u"")
@@ -102,6 +108,8 @@ xexact = 0.68232780382801932737
 d = computeDigits(xexact, xs, 10)
 print(u"Correct decimal digits=", d)
 print(u"Iterations=", len(history))
+print("Historique de Newton")
+print(history)
 #
 # 4.2 Faire un graphique
 print(u"")

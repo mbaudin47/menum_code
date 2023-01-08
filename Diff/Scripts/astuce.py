@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
-Compare les implémentations naives et robustes d'une 
+Compare les implémentations naïves et robustes d'une 
 formule de différences finies.
 
 Références
+----------
 Jacques Dumontet. « Algorithme de dérivation numérique : étude théo-
 rique et mise en œuvre sur ordinateur ». Thèse de doct. Université de
 Béjaia-Abderrahmane Mira, 1973.
@@ -13,6 +14,9 @@ Béjaia-Abderrahmane Mira, 1973.
 J. Dumontet et J. Vignes. « Détermination du pas optimal dans le
 calcul des dérivées sur ordinateur ». In : R.A.I.R.O Analyse numérique
 11.1 (1977), p. 13-25.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -76,16 +80,15 @@ for n in range(number_of_steps):
 fig = plt.figure()
 plt.plot(h, err_with_trick, "-", label="Astuce magique")
 plt.plot(h, err_with_no_trick, ":", label="Sans astuce")
-plt.grid()
 plt.yscale("log")
 plt.xscale("log")
 plt.xlabel(r"$h$")
 plt.ylabel(r"$e_{abs}$")
-plt.title(r"Erreur absolue en $x=10^4$ (décentrée).")
+plt.title(r"Erreur absolue en $x=10^4$ (décentrée)")
 plt.legend(bbox_to_anchor=(1.0, 1.0))
 fig.set_figwidth(2.0)
 fig.set_figheight(1.2)
-plt.savefig("numdiff-magic-trick-decentree.pdf", bbox_inches="tight")
+plt.savefig("astuce-decentree.pdf", bbox_inches="tight")
 
 # Calcul du pas optimal dans ce cas particulier
 h_opt = np.sqrt(2.0 * abs(f(x)) * sys.float_info.epsilon / abs(dff(x)))
@@ -126,13 +129,12 @@ for n in range(number_of_steps):
 fig = plt.figure()
 plt.plot(h, err_with_trick, "-", label="Astuce magique")
 plt.plot(h, err_with_no_trick, ":", label="Sans astuce")
-plt.grid()
 plt.yscale("log")
 plt.xscale("log")
 plt.xlabel(r"$h$")
 plt.ylabel(r"$e_{abs}$")
-plt.title(r"Erreur absolue en $x=10^4$ (centrée).")
+plt.title(r"Erreur absolue en $x=10^4$ (centrée)")
 plt.legend(bbox_to_anchor=(1.0, 1.0))
 fig.set_figwidth(2.0)
 fig.set_figheight(1.2)
-plt.savefig("numdiff-magic-trick-centree.pdf", bbox_inches="tight")
+plt.savefig("astuce-centree.pdf", bbox_inches="tight")

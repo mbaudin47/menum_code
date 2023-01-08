@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Utilise la méthode de la dichotomie pour déterminer une approximation de 
 sqrt(2) par résolution de l'équation non linéaire x^2 - 2 = 0. 
@@ -12,6 +12,11 @@ equation x^2 - 2 = 0.
 Locate the zero of the function. 
 Plot the number of correct digits during intermediate iterations of the 
 algorithm. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from math import ceil, log, sqrt
 from fzero import bisectiongui, bisection

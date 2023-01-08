@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Calcule la température de Debye d'un solide. 
@@ -16,14 +16,16 @@ kB est la constante de Boltzmann
 TD est la température de Debye
 
 Références
+----------
 http://en.wikipedia.org/wiki/Debye_model
 
-"Computational Physics"
-M. Newman
+M. Newman. "Computational Physics"
 CHAPTER 5, INTEGRALS AND DERIVATIVES
-Exercise 5.9: Heat capacity of a solid
-p.33
+Exercise 5.9: Heat capacity of a solid, p.33
 http://www-personal.umich.edu/~mejn/cp/chapters/int.pdf
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl

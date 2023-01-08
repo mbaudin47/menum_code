@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Contre-exemples de choix du pas optimal pour la dérivée première. 
 Ces exemples montrent que le pas h = sqrt(epsilon) n'est pas toujours 
 optimal et qu'il faut tenir compte de la dérivée seconde 
 pour évaluer le pas optimal exact.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import sys
@@ -99,12 +104,12 @@ pl.plot(h, e[:, 0], "-", label="$x=1$")
 pl.plot(h, e[:, 1], "--", label="$x=10^2$")
 pl.plot(h, e[:, 2], ":", label="$x=10^4$")
 pl.xlabel(r"$h$")
-pl.ylabel(r"$E_{abs}$")
+pl.ylabel(r"$e_{abs}$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.title(u"Calcule f' par formule décentrée.")
+pl.title(u"Calcule $f'$ par formule décentrée")
 pl.xscale("log")
 pl.yscale("log")
-pl.savefig("contre-exemples-numdiff-sqrt.pdf", bbox_inches="tight")
+pl.savefig("contre-exemples.pdf", bbox_inches="tight")
 
 # Recherche du plus petit incrément
 x = 1.0e10

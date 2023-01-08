@@ -1,4 +1,4 @@
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 from floats import computeDigits, relativeError, expm1Cond, logCond, log1pCond
 from numpy import linspace

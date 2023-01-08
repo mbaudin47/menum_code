@@ -1,6 +1,11 @@
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 A collection of functions for quadrature.
+
+Reference
+---------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -366,10 +371,16 @@ def compositesimpson_rule(f, a, b, *args):
         The number of evaluations of f(x).
     """
     c = (a + b) / 2.0
-    integral1, fcount1 = simpson_rule(f, a, c, *args)
-    integral2, fcount2 = simpson_rule(f, c, b, *args)
-    integral = integral1 + integral2
-    fcount = fcount1 + fcount2
+    d = (a + c) / 2.0
+    e = (c + b) / 2.0
+    fa = f(a, *args)
+    fb = f(b, *args)
+    fc = f(c, *args)
+    fd = f(d, *args)
+    fe = f(e, *args)
+    h = b - a
+    integral = h * (fa + 4.0 * fd + 2.0 * fc + 4.0 * fe + fb) / 12.0
+    fcount = 5
     return integral, fcount
 
 
@@ -406,10 +417,22 @@ def boole_rule(f, a, b, *args):
     fcount : int
         The number of evaluations of f(x).
     """
-    integral1, fcount1 = simpson_rule(f, a, b, *args)
-    integral2, fcount2 = compositesimpson_rule(f, a, b, *args)
-    integral = integral2 + (integral2 - integral1) / 15
-    fcount = fcount1 + fcount2
+    c = (a + b) / 2.0
+    d = (a + c) / 2.0
+    e = (c + b) / 2.0
+    fa = f(a, *args)
+    fb = f(b, *args)
+    fc = f(c, *args)
+    fd = f(d, *args)
+    fe = f(e, *args)
+    h = b - a
+    w1 = 7.0 / 6.0
+    w2 = 16.0 / 3.0
+    w3 = 2.0
+    w4 = 16.0 / 3.0
+    w5 = 7.0 / 6.0
+    integral = h * (w1 * fa + w2 * fd + w3 * fc + w4 * fe + w5 * fb) / 15.0
+    fcount = 5
     return integral, fcount
 
 
@@ -1121,6 +1144,46 @@ if __name__ == "__main__":
     from floats import computeDigits
     from numpy import nextafter, sqrt, sin
 
+    #
+    # Check degree of extacness of various rules
+    #-------------------------------------------
+    def polynomial(x, p):
+        y = x ** p
+        return y
+
+    def check_degree_exactness(rule, pmax):
+        """
+        Check the degree of exactness of a rule.
+
+        Parameters
+        ----------
+        rule : function
+            The quadrature rule.
+        pmax : int
+            The maximum polynomial degree to test.
+
+        Returns
+        -------
+        None.
+
+        """
+        a = 0.0
+        b = 1.0
+        for p in range(pmax):
+            exact = 1.0 / (1.0 + p)
+            integral, fcount = rule(polynomial, a, b, p)
+            np.testing.assert_allclose(exact, integral, rtol = rtol)
+    
+    rtol = 1.0e-15  # To leave some space to rounding errors
+    check_degree_exactness(midpoint_rule, 1)
+    check_degree_exactness(trapezoidal_rule, 1)
+    check_degree_exactness(simpson_rule, 3)
+    check_degree_exactness(compositesimpson_rule, 3)
+    check_degree_exactness(boole_rule, 5)
+
+    #
+    # Check adaptsim
+    #---------------
     def myfunB(x):
         y = 1.0 / (1.0 + x ** 4)
         return y
@@ -1129,25 +1192,27 @@ if __name__ == "__main__":
 
     # adaptsim
     integral, fcount = adaptsim(myfunB, 0.0, 1.0)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     # composite_midpoint
     integral, fcount = composite_midpoint(myfunB, 0.0, 1.0, 10000)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     # composite_trapezoidal
     integral, fcount = composite_trapezoidal(myfunB, 0.0, 1.0, 10000)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     # composite_simpson
     integral, fcount = composite_midpoint(myfunB, 0.0, 1.0, 10000)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     runGraphics = True
     if runGraphics:
         integral, fcount = adaptsim_gui(myfunB, 0.0, 1.0)
 
     #
+    # Check adaptsim
+    #---------------
     print(u"Singularity: Solution 1 is to change a")
 
     def mysinc(x):
@@ -1158,7 +1223,7 @@ if __name__ == "__main__":
     print(u"afterzero=", afterzero)
     integral, fcount = adaptsim(mysinc, afterzero, pi)
     expected = 1.85193705198246617036
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     #
     print(u"Solution 2 : change f")
@@ -1173,13 +1238,17 @@ if __name__ == "__main__":
     # integral from 0 to pi sin(x)/x
     integral, fcount = adaptsim(mysincbis, 0.0, pi)
     expected = 1.85193705198246617036
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
     #
+    # Check composite_midpoint
+    #-------------------------
     integral, fcount = composite_midpoint(mysincbis, 0.0, pi, 10000)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
     #
+    # Check composite_trapezoidal
+    #----------------------------
     integral, fcount = composite_trapezoidal(mysincbis, 0.0, pi, 10000)
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
     #
     print(u"Extra args")
@@ -1193,9 +1262,11 @@ if __name__ == "__main__":
     atol = 1.0e-15
     integral, fcount = adaptsim(betafun, 0.0, 1.0, atol, z, w)
     expected = 0.0348329096012058297782
-    np.testing.assert_almost_equal(integral, expected)
+    np.testing.assert_allclose(integral, expected)
 
+    #
     # Benchmark
+    #----------
     test_collection = test_problems()
     for problem in test_collection:
         # adaptive quadrature

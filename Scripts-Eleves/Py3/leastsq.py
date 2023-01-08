@@ -1,7 +1,12 @@
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 A collection of functions for least squares.
+
+Reference
+---------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 
@@ -30,6 +35,9 @@ def polynomial_fit_normal_equations(t, y, n):
         The y observations
     n : int, n>=0,
         The degree of the polynomial
+    
+    Returns
+    -------
     bet : np.array(n + 1)
         The coefficients of the polynomial
 
@@ -79,6 +87,9 @@ def polynomial_value(bet, u):
         The coefficients of the polynomial in decreasing power order.
     u : np.array(m)
         The points where to evaluate the polynomial
+    
+    Returns
+    -------
     v : np.array(m)
         The value of the polynomial at u
 
@@ -121,6 +132,9 @@ def polynomial_fit(t, y, n):
         The y observations
     n : int, n>=0,
         The degree of the polynomial
+    
+    Returns
+    -------
     bet : np.array(n + 1)
         The coefficients of the polynomial
 

@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine la sécante à la courbe y = x ** 2.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -31,12 +36,12 @@ pl.plot(x, y, "-", label="$f(x)=\sin(x)$")
 pl.plot(x, t, "--", label="$f(a)+(x-a)f'(a)$")
 pl.plot(x, s, ":", label="$f(a)+(x-a)d$")
 pl.plot([a, a], [ymin, np.sin(a)], ":")
-pl.text(a - 3.0 * delta, ymin + delta, "a")
+pl.text(a - 3.0 * delta, ymin + delta, "$a$")
 pl.plot([a + h, a + h], [ymin, np.sin(a + h)], ":")
-pl.text(a + h + delta, ymin + delta, "a + h")
+pl.text(a + h + delta, ymin + delta, "$a + h$")
 pl.ylim(bottom=ymin)
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.title(u"Sécante de $\sin$ au point a=2 avec h=1.")
+pl.title(u"Sécante de $\sin$ au point $a=2$ avec $h=1$")
 pl.savefig("secante-courbe.pdf", bbox_inches="tight")

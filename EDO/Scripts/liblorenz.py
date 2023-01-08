@@ -1,5 +1,19 @@
-# Copyright (C) 2013 - 2021 - Michael Baudin
+# Copyright (C) 2013 - 2023 - Michael Baudin
+"""
+Une librairie pour le modèle de Lorenz.
 
+Références
+----------
+Morris W. Hirsch, Stephen Smale et Robert. L. Devaney. Differential 
+Equations, Dynamical Systems, and an introduction to chaos, Third
+Edition. Elsevier, 2013.
+
+Martin Braun. Differential equations and their applications, Fourth Edition. 
+Texts in applied mathematics. Springer, 1993.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
+"""
 from scipy.integrate import odeint
 import numpy as np
 from pylab import plot, xlabel, ylabel, figure, axis, legend

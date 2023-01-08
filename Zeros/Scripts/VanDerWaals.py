@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Pour un gaz réel, l'équation PV = nRT ne modélise pas correctement 
@@ -23,7 +23,8 @@ Denoting by a and b the gas constants according to the van der Waals
 model, in order to determine the specific volume v of the gas, once P and
 T are known, we must solve a nonlinear equation.
 
-Reference
+Références
+----------
 Numerical Mathematics, Alfio Quarteroni, Riccardo Sacco, Fausto Saleri, 
 Springer, Texts in Applied Mathematics, Volume 37, 2007, Chapitre 6, 
 "6.7.1 Analysis of the State Equation for a Real Gas", p.276
@@ -36,6 +37,9 @@ Peng–Robinson model
 Wohl model
 Beattie–Bridgman model
 http://en.wikipedia.org/wiki/Real_gas
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from sys import float_info
@@ -60,9 +64,10 @@ def calculeVolume(n, T, P):
     Vmin = V / 10.0
     Vmax = V * 10.0
     reltolx = None
+    abstolx = 0.0
     verbose = False
     V, history = zeroin(
-        vanderwaalsSolve, Vmin, Vmax, reltolx, verbose, a, b, n, R, T, P
+        vanderwaalsSolve, Vmin, Vmax, reltolx, abstolx, verbose, a, b, n, R, T, P
     )
     print(u"Van Der Waals - zeroin")
     print(u"    Iterations:", len(history))
@@ -73,7 +78,7 @@ def calculeVolume(n, T, P):
     Vmax = 0.1
     reltolx = None
     V, history = bisection(
-        vanderwaalsSolve, Vmin, Vmax, reltolx, verbose, a, b, n, R, T, P
+        vanderwaalsSolve, Vmin, Vmax, reltolx, abstolx, verbose, a, b, n, R, T, P
     )
     print(u"Van Der Waals - bisection")
     print(u"    Iterations:", len(history))
@@ -83,7 +88,7 @@ def calculeVolume(n, T, P):
     V0 = V
     reltolx = None
     V, history = newton(
-        vanderwaalsSolve, V0, vanderwaalsSolvePrime, reltolx, verbose, a, b, n, R, T, P
+        vanderwaalsSolve, V0, vanderwaalsSolvePrime, reltolx, abstolx, verbose, a, b, n, R, T, P
     )
     print(u"Van Der Waals - newton")
     print(u"    Iterations:", len(history))
@@ -100,7 +105,7 @@ def afficheVolume(V, M):
     print(u"    Volume =%.17e(m3)" % V)
     rho = density(M, V)
     print(u"    Density=", rho, "(kg/m3)")
-    v = 1 / rho
+    v = 1.0 / rho
     print(u"    Specific Volume=", v, "(m3/kg)")
     return None
 

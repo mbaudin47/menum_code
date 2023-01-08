@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On considère 4 observations de la fonction f(x) = round(exp(x)) pour 
 x entre -1 et 2 où round arrondi à la valeur entière la plus proche. 
@@ -8,6 +8,11 @@ On utilise la méthode des équations normales pour déterminer un polynôme
 de degré 2 s'ajustant aux observations au sens des moindres carrés.
 On utilise la méthode des équations normales et on utilise la matrice de 
 Vandermonde pour calculer la matrice de conception.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import pylab as pl
 import numpy as np
@@ -54,11 +59,11 @@ print(u"(polynomial_fit_normal_equations) bet=", bet)
 u = np.linspace(-1.5, 2.5)
 p = polynomial_value(bet, u)
 
-pl.figure(figsize=(2.0, 1.0))
+pl.figure(figsize=(1.0, 1.0))
 pl.plot(u, p, "-", label=u"Modèle")
 pl.plot(t, y, "o", label=u"Données")
 pl.ylim([-0.5, 7.5])
 pl.legend(bbox_to_anchor=(1.0, 1.0))
-pl.xlabel(u"t")
-pl.ylabel(u"y")
+pl.xlabel(u"$t$")
+pl.ylabel(u"$y$")
 pl.savefig("polynomial-fit.pdf", bbox_inches="tight")

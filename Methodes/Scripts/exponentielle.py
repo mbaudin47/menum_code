@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Montre l'utilité de la fonction expm1 sur un exemple concret de 
@@ -17,10 +17,13 @@ est de 20 000 km.
 
 Reference 
 ---------
-* Introduction to Probability and Statistics for Engineers 
+Introduction to Probability and Statistics for Engineers 
 and Scientists 3rd ed 
 Section 5.6 - Exponentials Random Variables
 S. Ross (Elsevier, 2004)
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from math import exp, log, expm1, log1p

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On considère une matrice A de taille 2-par-2.
 Soit C le cercle unité, de centre l'origine du repère et de rayon égal à 1.
@@ -15,6 +15,11 @@ Le script dessine le point y = A * x pour une
 collection de points x dans C. 
 C'est une ellipse, dont les demi-axes dépendent des valeurs et vecteurs 
 singuliers de la matrice. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from numpy import linspace, cos, sin, array, argmax, inf
 from numpy.linalg import norm
@@ -34,16 +39,16 @@ t = linspace(0, 2 * pi, m)
 x = zeros((2, m))
 x[0, :] = r * cos(t)
 x[1, :] = r * sin(t)
-pl.figure(figsize=(2.5, 1.5))
+pl.figure(figsize=(2.5, 1.0))
 pl.plot(x[0, :], x[1, :], "-", label="$x$")
 pl.xlabel(u"$x_1$")
 pl.ylabel(u"$x_2$")
 pl.axis("equal")
 # Plot the image ellipse
 b = A @ x
-pl.plot(b[0, :], b[1, :], "-", label="$Ax$")
+pl.plot(b[0, :], b[1, :], "--", label="$Ax$")
 pl.legend()
-pl.savefig("demo-normematricielle.pdf", bbox_inches="tight")
+pl.savefig("norme-matricielle.pdf", bbox_inches="tight")
 
 
 def vectorMaxNorm1(A):

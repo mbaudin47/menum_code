@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Calcule la dérivée seconde d'une fonction réelle par des méthodes 
@@ -10,6 +10,11 @@ Observe la sensibilité en fonction de la longueur du pas de différentiation.
 Compute second derivative of a scalar function with methods of accuracy order 
 1, 2 and 4. 
 See the sensitivity to the step width.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numdiff
 from floats import computeDigits

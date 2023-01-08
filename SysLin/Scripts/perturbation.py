@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 """
 Pour une matrice donnée, calcule le second 
@@ -11,16 +11,14 @@ En d'autres termes, calcule b et delta b tels que
 norm(delta x) / norm(x) = cond(A) * norm(delta b) / norm(b)
 
 Références
-[1] Regularization of Least Squares Problems
-Heinrich Voss
+----------
+Heinrich Voss, Regularization of Least Squares Problems
 voss@tu-harburg.de
 Hamburg University of Technology
 Institute of Numerical Simulation
 https://www.mat.tuhh.de/lehre/material/RegLS.pdf
 
-[2]
-Discrete Least-squares Approximations
-Biswa Nath Datta
+Biswa Nath Datta, Discrete Least-squares Approximations
 Distinguished Research Professor
 Northern Illinois University
 De Kalb
@@ -28,9 +26,11 @@ Illinois 60115, USA
 E-mail : dattab@math.niu.edu
 http://www.math.niu.edu/~dattab/math435.2009/CHAPTER_LEASTSQURES.pdf
 
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 
 import numpy as np
 import scipy
@@ -178,11 +178,11 @@ for n in matricessize:
 
 pl.figure(figsize=(2.5, 1.5))
 pl.plot(matricessize, cond1, ".", label=r"$1$")
-pl.plot(matricessize, cond2, ".", label=r"$2$")
-pl.plot(matricessize, condi, ".", label=r"$\infty$")
+pl.plot(matricessize, cond2, "+", label=r"$2$")
+pl.plot(matricessize, condi, "o", label=r"$\infty$")
 pl.yscale("log")
 pl.xlabel(u"Taille de la matrice")
 pl.ylabel(u"Conditionnement")
 pl.title(u"Matrice de Hilbert")
-pl.legend()
-pl.savefig("hilbert-cond.pdf", bbox_inches="tight")
+pl.legend(bbox_to_anchor=(1.0, 1.0))
+pl.savefig("perturbation.pdf", bbox_inches="tight")

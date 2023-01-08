@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Le script illustre comment utiliser produit matrice-vecteur pour déterminer 
 la géométrie d'un robot en utilisant les coordonnées homogènes. 
@@ -12,8 +12,12 @@ entre 0 et 2pi pour les deux angles des bras et on affiche les positions
 associées, ce qui montre la portée du robot. 
 
 Références
+----------
 2D Kinematics, SI 475  : Intelligent Robotics
 Gavin Taylor,   USNA CS
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import array, linspace
@@ -52,8 +56,8 @@ py = r * sin(t0 + theta)
 pl.plot(px, py, "o")
 pl.plot([px, x1], [py, y1], "--", color="tab:blue")
 pl.axis("equal")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.savefig("matrice-homogene-translrotat.pdf", bbox_inches="tight")
 
 #
@@ -130,8 +134,8 @@ pl.figure(figsize=(2.0, 1.5))
 plotRobot(theta, phi, l1, l2)
 pl.text(0.5, 1, "A")
 pl.text(1.2, 3, "B")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.axis("equal")
 pl.savefig("matrice-homogene-2bras.pdf", bbox_inches="tight")
 

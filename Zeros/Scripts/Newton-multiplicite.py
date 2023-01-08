@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre la lente convergence de la méthode de Newton si la multiplicité est 
 supérieure à 1.
@@ -16,6 +16,10 @@ Dans la seconde partie, on considère la fonction
 
 f(x) = (x - a) * exp(alpha * (x - a) ^ 2)
 
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 from fzero import newtongui, newton
 import pylab as pl
@@ -173,19 +177,19 @@ x0 = 1.5
 reltolx = 1.0e-9
 # m = 1
 y = fonction_multiplicite_1(x)
-pl.plot(x, y, "-", label="m=1")
+pl.plot(x, y, "-", label="$m=1$")
 xs, history = newtongui(
     fonction_multiplicite_1, x0, derivee_multiplicite_1, reltolx=reltolx
 )
 # m = 3
 y = fonction_multiplicite_3(x)
-pl.plot(x, y, "-", label="m=3")
+pl.plot(x, y, "-", label="$m=3$")
 xs, history = newtongui(
     fonction_multiplicite_3, x0, derivee_multiplicite_3, reltolx=reltolx
 )
 # m = 5
 y = fonction_multiplicite_5(x)
-pl.plot(x, y, "-", label="m=5")
+pl.plot(x, y, "-", label="$m=5$")
 xs, history = newtongui(
     fonction_multiplicite_5, x0, derivee_multiplicite_5, reltolx=reltolx
 )
@@ -208,7 +212,7 @@ def plot_convergence(xexact, function, derivative, x0, reltolx=1.0e-7, line_styl
     xs, history = newton(function, x0, derivative, reltolx=reltolx)
     iteration_indices, absolute_error = calcule_erreur_absolue(xexact, history)
     pl.plot(iteration_indices, absolute_error, line_style)
-    pl.xlabel(u"Iterations")
+    pl.xlabel(u"Itérations")
     pl.ylabel(u"Erreur absolue")
     return
 
@@ -232,7 +236,7 @@ plot_convergence(
 plot_convergence(
     xexact, fonction_multiplicite_7, derivee_multiplicite_7, x0, line_style="--"
 )
-pl.legend(["m=1", "m=3", "m=5", "m=7"], bbox_to_anchor=(1.0, 1.0))
+pl.legend(["$m=1$", "$m=3$", "$m=5$", "$m=7$"], bbox_to_anchor=(1.0, 1.0))
 pl.yscale("log")
 pl.title("$f(x) = (x - 1)^m$")
 pl.savefig("Newton-multiplicite.pdf", bbox_inches="tight")
@@ -308,8 +312,8 @@ x0 = 1.5
 # Utilise la méthode de Newton
 x = np.linspace(0.5, 1.5, N)
 pl.figure()
-pl.xlabel(u"x")
-pl.ylabel(u"f(x)")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$f(x)$")
 pl.legend()
 # m = 1
 y = fonction_multiplicite_3(x)

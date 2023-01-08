@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre la convergence linéaire et quadratique d'une suite.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy
 import pylab as pl
@@ -30,12 +35,12 @@ for i in range(1, n):
 
 #
 # 3. Plot
-pl.figure(figsize=(2.5, 2.0))
+pl.figure(figsize=(2.5, 1.5))
 (p1,) = pl.plot(numpy.arange(n), x, "o--")
 (p2,) = pl.plot(numpy.arange(n), y, "x-")
 pl.yscale("log")
 pl.xlabel(u"Nombre d'itérations")
 pl.ylabel(u"Erreur absolue")
-pl.legend([p1, p2], ["Linéaire, $\mu=1/2$", "Quadratique"], loc=3)
+pl.legend([p1, p2], ["Linéaire", "Quadratique"], bbox_to_anchor=(1.0, 1.0))
 pl.title(u"Convergence linéaire et quadratique")
 pl.savefig("convergence.pdf", bbox_inches="tight")

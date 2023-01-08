@@ -21,6 +21,8 @@ Springer Science & Business Media.
 Higham, Nicholas J. _Accuracy and stability of numerical algorithms_. 
 Society for industrial and applied mathematics, 2002.
 
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 

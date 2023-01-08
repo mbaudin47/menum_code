@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Analyse de la longueur optimale du pas de discrétisation h pour une méthode 
 d'ordre p pour la résolution d'une équation différentielle ordinaire.
@@ -9,6 +9,11 @@ On suppose que l'intervalle d'intégration est de longueur L = t[final] - t[0]
 et que la constante correspondant à l'ordre de précision est C.
 On fait l'hypothèse que l'erreur globale est inférieure ou égale à la 
 somme des erreurs locales. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from sys import float_info

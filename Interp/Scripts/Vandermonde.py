@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Considère une table de 4 observations et utilise la fonction vander du module 
 numpy pour évaluer la matrice de Vandermonde.
@@ -11,6 +11,11 @@ Réalise une interpolation de Lagrange sur les données.
 Use numpy's vander function.
 Evaluate the Vandermonde matrix with two for loops.
 Perform Lagrange interpolation.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy as np
 import pylab as pl
@@ -58,8 +63,8 @@ pl.figure(figsize=(2.0, 1.0))
 pl.title(u"Le polynôme $x^3 - 2 x^2 + 1$")
 pl.plot(x, y, "o")
 pl.plot(u, v, "-")
-pl.xlabel(u"x")
-pl.ylabel(u"y")
+pl.xlabel(u"$x$")
+pl.ylabel(u"$y$")
 pl.savefig("Vandermonde.pdf", bbox_inches="tight")
 
 ########################################

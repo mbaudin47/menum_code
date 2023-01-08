@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Montre l'algorithme du produit matrice vecteur, fondé sur deux boucles 
 imbriquées.
 Montre comment utiliser l'opérateur @ avec des array numpy et compare 
 les deux méthodes. 
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 import numpy
 

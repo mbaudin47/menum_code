@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 On considère l'intervalle [-1,1]. 
 On utilise n points equidistants.
@@ -13,11 +13,15 @@ Evalue la constante de Lebesgue, qui apparaît dans l'analyse du
 conditionnement du polynôme interpolant.
 
 Références
+----------
 Annales Mathematicae et Informaticae, 33 (2006) pp. 109–123
 Lebesgue constants in polynomial interpolation, Simon J. Smith
 
 Turetskii, A. H., The bounding of polynomials prescribed at equally distributed
 points, Proc. Pedag. Inst. Vitebsk Vol. 3 (1940), 117–127 (in Russian).
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 import numpy as np
@@ -70,8 +74,8 @@ pl.plot(x, y, "-.", label=r"$L_3$")
 y = lagrange(x, 3, nodes)
 pl.plot(x, y, ":", label=r"$L_4$")
 pl.legend(bbox_to_anchor=(1.05, 1))
-pl.xlabel(u"x")
-pl.title(u"Polynômes de Lagrange (n=%d)." % (n))
+pl.xlabel(u"$x$")
+pl.title(u"Polynômes de Lagrange")
 pl.savefig("Lagrange-polynome.pdf", bbox_inches="tight")
 
 # 2. Evalue la constante de Lebesgue, pour x dans [-1,1]
@@ -106,21 +110,28 @@ if False:
         print(u"n=%d, d=%d, L=%e" % (n, n - 1, L[n - 2]))
         # print "%d & %.3f\\\\" % (n,L)
 
-# Valeur théorique exacte de la constante de Lebesgue.
-# Source
-# Annales Mathematicae et Informaticae, 33 (2006) pp. 109–123
+# Valeur théorique exacte de la constante de Lebesgue pour 
+# l'interpolation par polynôme interpolateur global avec 
+# (1) noeuds équidistants, (2) noeuds de Chebyshev. 
+# References
+# - Annales Mathematicae et Informaticae, 33 (2006) pp. 109–123
 # Lebesgue constants in polynomial interpolation, Simon J. Smith
+# - Mason, John C., and David C. Handscomb. _Chebyshev polynomials_. 
+# CRC press, 2002. Page 161
 #
 # Turetskii, A. H., The bounding of polynomials prescribed at equally distributed
 # points, Proc. Pedag. Inst. Vitebsk Vol. 3 (1940), 117–127 (in Russian).
 n = 1.0 * np.arange(2, nmax)
+fig = pl.figure(figsize=(1.2, 1.2))
 lbound = 2 ** n / (math.e * n * np.log(n))
-fig = pl.figure(figsize=(2.2, 1.2))
-pl.plot(n, lbound, "-")
-pl.xlabel(u"n")
+pl.plot(n, lbound, "-", label="Équidistants")
+lbound = 2.0 * np.log(n) / np.pi + 0.9625
+pl.plot(n, lbound, "-", label="Chebyshev")
+pl.xlabel(u"$n$")
 pl.ylabel(r"$\Lambda_n$")
 pl.yscale("log")
-pl.title(u"Constante de Lebesgue.")
+pl.legend(bbox_to_anchor=(1.0, 1.0))
+pl.title(u"Constante de Lebesgue")
 pl.savefig("Lagrange-polynome-Lebesgue-constantasymp.pdf", bbox_inches="tight")
 
 
@@ -147,9 +158,9 @@ nodes = np.linspace(a, b, n)
 nx = 100 * n
 x = np.linspace(a, b, nx)
 y = lebesgueFunction(nodes, x)
-fig = pl.figure(figsize=(2.0, 1.0))
+fig = pl.figure(figsize=(1.5, 1.0))
 pl.plot(x, y, "-")
-pl.xlabel(u"x")
+pl.xlabel(u"$x$")
 pl.ylabel(r"$\lambda_%d(x)$" % (n))
-pl.title(u"Fonction de Lebesgue (n=%d)." % (n))
+#pl.title(u"Fonction de Lebesgue ($n=%d$)" % (n))
 pl.savefig("Lagrange-polynome-Lebesgue-fonction.pdf", bbox_inches="tight")

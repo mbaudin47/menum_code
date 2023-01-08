@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
-Montre l'algorithme du produit matrix-vecteur, l'algorithme du produit 
+Montre l'algorithme du produit matrice-vecteur, l'algorithme du produit 
 matrice-matrice.
 Montre les fonctions de numpy pour les vecteurs : 
 somme, produit tensoriel, multiplication par un scalaire.
+
+Références
+----------
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import array, zeros, outer

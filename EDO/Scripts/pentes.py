@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Dessine les pentes utilisées dans les méthodes numériques.
 
@@ -16,6 +16,14 @@ y(t) = y0 * exp(a * t)
 pour tout t >= 0.
 
 On utilise a = 1.
+
+Références
+----------
+Cleve Moler. Numerical Computing with Matlab. Society for
+Industrial Mathematics, 2004.
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from numpy import linspace, exp

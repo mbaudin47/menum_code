@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2013 - 2021 - Michaël Baudin
+# Copyright (C) 2013 - 2023 - Michaël Baudin
 """
 Considère une attaque par force brute d'une clé de hash. 
 On détermine le nombre d'attaques nécessaires pour provoquer une collision 
@@ -10,9 +10,13 @@ la clé), on peut utiliser la fonction log1p pour déterminer n avec
 précision.
 
 Références
+----------
 http://en.wikipedia.org/wiki/Birthday_attack
 https://en.wikipedia.org/wiki/Collision_attack
 https://crypto.stackexchange.com/questions/9258/birthday-attack
+
+Michaël Baudin, "Introduction aux méthodes numériques". 
+Dunod. Collection Sciences Sup. (2023)
 """
 
 from math import log, log1p, sqrt
