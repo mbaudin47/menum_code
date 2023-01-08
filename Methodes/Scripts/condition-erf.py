@@ -14,6 +14,7 @@ import numpy as np
 from scipy.special import erf
 from floats import erfCond
 import matplotlibpreferences
+import matplotlib
 
 matplotlibpreferences.load_preferences()
 
@@ -31,7 +32,10 @@ pl.subplot(2, 1, 1)
 pl.suptitle(u"Cond. de la fonction erf")
 pl.plot(x, y, "-")
 pl.ylim(bottom=-1.2, top=1.2)
-pl.ylabel(u"$\\textrm{erf}(x)$")
+if matplotlib.rcParams["text.usetex"]:
+    pl.ylabel(u"$\\textrm{erf}(x)$")
+else:
+    pl.ylabel(u"erf(x)")
 #
 pl.subplot(2, 1, 2)
 pl.plot(x, c, "-")
