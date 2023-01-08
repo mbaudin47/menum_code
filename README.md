@@ -13,7 +13,7 @@ La licence est indiquée dans le fichier `LICENSE` disponible dans ce répertoir
 
 **Table des matières :**
 - `Diff` : méthodes de différentiation (chapitre 9)
-- `EDOs` : équations différentielles ordinaires (chapitre 12)
+- `EDO` : équations différentielles ordinaires (chapitre 12)
 - `Flottants` : nombres flottants (chapitre 4)
 - `Integration` : intégration numérique (chapitre 11)
 - `Interp` : interpolation (chapitre 8)
