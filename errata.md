@@ -23,7 +23,7 @@ Michaël Baudin _"Introduction aux méthodes numériques. Théorie, algorithmes,
   la section etc." au lieu de : "introduit".
 - Page 267 : Il faut lire : "[...] c'est pourquoi on devrait plutôt utiliser des polynômes
   de degré faible etc." (doublure de plutôt)
-- Page 268 : Il faut lire : "[...]la méthode de Gram-Schmidt permet de 
+- Page 268 : Il faut lire : "[...] la méthode de Gram-Schmidt permet de 
   déterminer $n$ vecteurs colonnes orthogonaux" au lieu de "orthogonales".
 - Page 271 : Il faut lire : "Le coefficient de résistivité, noté $\alpha$, est tel que 
   $\rho(T)=\beta_2(1 + \alpha T)$ [...]" et non pas "$\rho(T)=\beta_1(1 + \alpha T)$".
