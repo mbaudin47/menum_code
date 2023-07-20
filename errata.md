@@ -7,7 +7,7 @@ Michaël Baudin _"Introduction aux méthodes numériques. Théorie, algorithmes,
 ## Description
 - Page 8 : L'espace est trop long entre https et le symbole ":" dans la note en bas de page.
 - Page 9 : La ligne : "x Vecteur: lettre latine..." apparaît deux fois dans la Table 5.
-- page 40 : Dans l'équation (3.2), la dérivée i-ème de f s’applique au point a et non en x.
+- Page 40 : Dans l'équation (3.2), la dérivée i-ème de f s’applique au point a et non en x.
 - Page 229 : Dans le paragraphe en bas de la page, il faut lire : "\[...\] pour la plupart 
   des formules de différences finies puisqu'elles ont des structures très similaires."
   et non pas "\[...\] _sont_ des structures \[...\]".
