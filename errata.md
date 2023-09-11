@@ -12,18 +12,20 @@ Nous avons hiérarchisé les erreurs en fonction de leur nature :
 ## Description
 - Page 8 (typographie) : L'espace est trop long entre https et le symbole « : » dans la note en bas de page.
 - Page 9 : La ligne : « x Vecteur: lettre latine [...] » apparaît deux fois dans la Table 5.
-- Page 40 (mathématique) : Dans l'équation (3.2), la dérivée i-ème de f s’applique au point a et non en x.
+- Page 40 (mathématiques) : Dans l'équation (3.2), la dérivée i-ème de f s’applique au point a et non en x.
   Il faut lire :
 ```math
 P_{n}(x) = \sum_{i=0}^{n} \frac{f^{(i)}(a)}{i!} (x-a)^{i}
 ```
+- Page 197 (mathématiques) : Le théorème 8.11 est faux. Le théorème de Jackson indique que la meilleure approximation polynomiale permet d'attendre l'ordre $O(n^{-r})$, mais ne concerne pas les polynômes de Chebyshev. 
+- Page 198 (mathématiques) : La phrase : "En appliquant ce théorème avec $r = 0$, on peut aussi comprendre la convergence de l'interpolation de Chebyshev sur une fonction discontinue de variation bornée." est fausse.
 - Page 229 (grammaire) : Dans le paragraphe en bas de la page, il faut lire : « \[...\] pour la plupart 
   des formules de différences finies puisqu'elles ont des structures très similaires. »
   et non pas « \[...\] _sont_ des structures \[...\] ».
 - Page 230 : Dans le paragraphe en haut de la page, la seconde apparition de « dominent »
   ne devrait pas s'y trouver. Il faut lire « Puisque les perturbations qui dominent le calcul
   sont les erreurs d'arrondi associées à la valeur de la fonction ~~dominent~~, ».
-- Page 265 (mathématique) : Le dénominateur de $\overline{t}$ est $\frac{1}{m}$ et non pas $\frac{1}{n}$.
+- Page 265 (mathématiques) : Le dénominateur de $\overline{t}$ est $\frac{1}{m}$ et non pas $\frac{1}{n}$.
   Le dénominateur de $\hat{\sigma}$ est $\frac{1}{m}$ et non pas $\frac{1}{n}$. 
 - Page 265 (typographie) : La date minimale est $t_{\min}$ et non pas $t_{min}$ (typographie).
 - Page 266 (grammaire) : Il faut lire « Pour comprendre pourquoi la méthode des équations normales etc. » et non pas « méthodes ».
@@ -34,11 +36,11 @@ P_{n}(x) = \sum_{i=0}^{n} \frac{f^{(i)}(a)}{i!} (x-a)^{i}
   de degré faible etc. » (doublure de plutôt)
 - Page 268 (grammaire) : Il faut lire : « [...] la méthode de Gram-Schmidt permet de 
   déterminer $n$ vecteurs colonnes orthogonaux » au lieu de « orthogonales ».
-- Page 271 (mathématique) : Il faut lire : « Le coefficient de résistivité, noté $\alpha$, est tel que 
+- Page 271 (mathématiques) : Il faut lire : « Le coefficient de résistivité, noté $\alpha$, est tel que 
   $\rho(T)=\beta_2(1 + \alpha T)$ [...] » et non pas « $\rho(T)=\beta_1(1 + \alpha T)$ ».
 - Page 275 (esthétique) : La taille de la figure 10.7 est trop grande.
 - Page 391 (typographie) : Dans l'équation 14.7, il faut lire : « $c_{\min}(x)$ » et non pas « $c_{min}(x)$ ».
-- Page 392 (mathématique) : Dans le théorème 14.7, il faut lire : « Soit $x \neq 0$ un nombre réel
+- Page 392 (mathématiques) : Dans le théorème 14.7, il faut lire : « Soit $x \neq 0$ un nombre réel
   tel que $f(x) \neq 0$, $f'(x) = 0$ et $f''(x) > 0$. ».
 
 ## Remerciements
