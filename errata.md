@@ -19,6 +19,7 @@ P_{n}(x) = \sum_{i=0}^{n} \frac{f^{(i)}(a)}{i!} (x-a)^{i}
 ```
 - Page 197 (mathématiques) : Le théorème 8.11 est faux. Le théorème de Jackson indique que la meilleure approximation polynomiale permet d'attendre l'ordre $O(n^{-r})$, mais ne concerne pas les polynômes de Chebyshev. 
 - Page 198 (mathématiques) : La phrase : "En appliquant ce théorème avec $r = 0$, on peut aussi comprendre la convergence de l'interpolation de Chebyshev sur une fonction discontinue de variation bornée." est fausse.
+- Page 207 : Dans la section 8.12, il manque le mot "figure" entre [81] et 3 en bas à droite de la page. De plus, il manque le lien vers des références issues de Wikimedia Commons: File:Interpolation Data.svg, File:Piecewise constant.svg, File:Interpolation example linear.svg et File:Interpolation example polynomial.svg dont les figures 8.2 page 178 et 8.3 page 179 sont inspirées et adaptées par un portage en Python.
 - Page 229 (grammaire) : Dans le paragraphe en bas de la page, il faut lire : « \[...\] pour la plupart 
   des formules de différences finies puisqu'elles ont des structures très similaires. »
   et non pas « \[...\] _sont_ des structures \[...\] ».
