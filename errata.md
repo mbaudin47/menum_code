@@ -40,6 +40,7 @@ P_{n}(x) = \sum_{i=0}^{n} \frac{f^{(i)}(a)}{i!} (x-a)^{i}
 - Page 271 (mathématiques) : Il faut lire : « Le coefficient de résistivité, noté $\alpha$, est tel que 
   $\rho(T)=\beta_2(1 + \alpha T)$ [...] » et non pas « $\rho(T)=\beta_1(1 + \alpha T)$ ».
 - Page 275 (esthétique) : La taille de la figure 10.7 est trop grande.
+- Page 283 : Il manque « la » dans « montre que formule du point milieu ».
 - Page 391 (typographie) : Dans l'équation 14.7, il faut lire : « $c_{\min}(x)$ » et non pas « $c_{min}(x)$ ».
 - Page 392 (mathématiques) : Dans le théorème 14.7, il faut lire : « Soit $x \neq 0$ un nombre réel
   tel que $f(x) \neq 0$, $f'(x) = 0$ et $f''(x) > 0$. ».
